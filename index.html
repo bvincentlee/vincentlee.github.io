@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Vincent Lee — Product Designer</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F3F3F3;
+      --white: #FFFFFF;
+      --coral: #F05A5A;
+      --text: #1d1d1f;
+      --text-muted: #555555;
+      --border: #DEDEDE;
+      --btn-bg: #EBEBEB;
+      --card-radius: 8px;
+      --img-radius: 8px;
+      --page-max: 1200px;
+      --page-pad: 80px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Nav */
+    nav {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    nav.nav-hidden { transform: translateY(-100%); }
+
+    .nav-inner {
+      width: 100%;
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 0 var(--page-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-toggle {
+      background: var(--btn-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      color: var(--text);
+      font-family: inherit;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-toggle:hover { background: #E2E2E2; border-color: #CACACA; }
+
+    /* Pages */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Shared layout */
+    .container {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 0 var(--page-pad);
+    }
+
+    /* Landing: intro sits in the upper area and fades away on scroll;
+       the first project row starts small below it and grows as you scroll up. */
+    .landing { }
+
+    .landing-works { padding-bottom: 0; }
+
+    /* Home */
+    .hero {
+      min-height: 64vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0 24px;
+      text-align: center;
+      will-change: opacity, transform;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: normal;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-copy { max-width: 760px; margin: 0 auto; }
+    .hero-copy p {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .hero-copy p + p { margin-top: 28px; }
+
+    /* Company links: underlined, inherit text color; brand color on hover */
+    .hero-copy a.ln {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+    .ln-instrument:hover { color: #EC4899; }  /* pink */
+    .ln-nasa:hover       { color: #0B3D91; }  /* NASA blue */
+    .ln-peloton:hover    { color: #7C3AED; }  /* purple */
+    .ln-river:hover      { color: #C8A24B; }  /* gold */
+
+    .works-section { padding-bottom: 80px; }
+    .works-section + .works-section { padding-top: 40px; }
+    .previous-works { padding-top: 64px; }
+
+    .section-label {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    /* Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+      row-gap: 48px;
+    }
+
+    /* Only the featured row scales on scroll; Previous works stays full size */
+    .landing-works .cards-grid {
+      --reveal: 0;   /* 0 = landing (0.9 size + slight blur), 1 = full size + sharp */
+      transform-origin: center center;
+      transform: scale(calc(0.9 + 0.1 * var(--reveal)));
+      filter: blur(calc((1 - var(--reveal)) * 2px));
+      transition: transform 0.05s linear, filter 0.05s linear;
+      will-change: transform, filter;
+    }
+
+    .card {
+      position: relative;
+      z-index: 0;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      background: var(--white);
+      border-radius: 14px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
+      z-index: -1;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-img {
+      background-color: var(--coral);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: var(--img-radius);
+      width: 100%;
+      aspect-ratio: 1028 / 560;
+      margin-bottom: 20px;
+    }
+
+    .card-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; line-height: normal; }
+    .card-desc  { font-size: 18px; font-weight: 400; color: #1d1d1f; line-height: normal; }
+
+    /* Info page */
+    .info-wrap {
+      padding: 64px 0 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 160px;
+    }
+
+    .info-text-section {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 660px;
+    }
+
+    .info-hero-heading {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    .info-bio-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .info-bio-text {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    /* Logo section */
+    .logos-section {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(32px, 10vw, 160px);
+      align-items: center;
+    }
+
+    .logo-cell {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .logo-cell img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: grayscale(100%);
+      transition: filter 0.2s ease;
+    }
+    .logo-cell img:hover {
+      filter: grayscale(0%);
+    }
+
+    /* Links section */
+    .info-links-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 660px;
+    }
+
+    .info-link {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      line-height: normal;
+    }
+
+    .info-link:hover { opacity: 0.7; }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      :root { --page-pad: 20px; }
+
+      .hero { padding: 44px 0 36px; text-align: left; }
+      .hero h1 { font-size: 22px; }
+
+      .cards-grid { grid-template-columns: 1fr; row-gap: 48px; }
+      .card-img { aspect-ratio: 1028 / 560; }
+
+      .info-wrap { padding: 36px 0 60px; gap: 80px; }
+      .info-hero-heading { font-size: 22px; }
+      .info-bio-text { font-size: 16px; }
+      .logos-section { gap: 24px; }
+      .logo-row { grid-template-columns: repeat(2, 1fr); column-gap: 80px; row-gap: 24px; }
+      .logo-cell { height: 64px; position: relative; }
+      .logo-cell img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: contain; }
+      .section-label { font-size: 16px; }
+    }
+
+    /* ─── Project Detail Page ─────────────────────────── */
+    #project-page { color: #1d1d1f; }
+    .project-wrap {
+      padding: 64px 0 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 120px;
+    }
+
+    .project-figure--hero {
+      width: 100%;
+    }
+
+    .project-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .project-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .project-title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .project-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .project-split {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .project-figure {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .project-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* Stacked/overlay images (e.g. Tier 1) sit on top of the first one */
+    .project-figure img ~ img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-figure--wide { width: 660px; max-width: 100%; min-width: 0; }
+    .project-figure--full { width: 100%; }
+    .project-figure--half { width: 100%; }
+    .project-figure--fade::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 202px;
+      flex-shrink: 0;
+    }
+    .project-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .project-meta-label {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .project-meta-value {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .project-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .project-section--concept {
+      margin-top: 80px;
+    }
+    .project-section-title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      width: 430px;
+    }
+
+    .project-concept-split {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .project-concept-text {
+      width: 430px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .project-concept-body {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .project-figure-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .project-figure-caption {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .project-two-col {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .project-two-col > * { flex: 1; }
+
+    .project-mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .project-caption-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .project-media-col {
+      width: 660px;
+      max-width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* NASA composite hero */
+    .nasa-hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1116 / 572;
+      background: #202942;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .nasa-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .nasa-hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(32,41,66,0.8);
+    }
+    .nasa-hero-mac {
+      position: absolute;
+      top: 6.64%; left: 13.17%;
+      width: 73.66%; height: 86.88%;
+      object-fit: contain;
+    }
+    .nasa-hero-screen {
+      position: absolute;
+      top: 8.25%; left: 19.71%;
+      width: 60.64%; height: 76.48%;
+      object-fit: cover;
+    }
+    /* Captioned media column with larger internal gap */
+    .project-media-col--gap40 { gap: 40px; }
+
+    @media (max-width: 900px) {
+      .project-split { flex-direction: column; }
+      .project-concept-split { flex-direction: column; }
+      .project-concept-text { width: 100%; }
+      .project-figure--wide { width: 100%; }
+    }
+
+    @media (max-width: 640px) {
+      .project-wrap { padding: 36px 0 80px; gap: 48px; }
+      .project-split { flex-direction: column; }
+      .project-figure--wide { width: 100%; }
+      .project-concept-split { flex-direction: column; }
+      .project-concept-text { width: 100%; }
+      .project-section-title { width: 100%; }
+      .project-two-col { flex-direction: column; }
+      .project-mode-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Motion: scroll reveal, page fade, press ─────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--reveal-delay, 0s);
+      will-change: opacity, transform;
+    }
+    .reveal.reveal-hero {
+      transform: translateY(28px) scale(1.04);
+      transition-duration: 0.9s;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+
+    /* Word-by-word headline reveal */
+    .word-reveal .w { display: inline-block; overflow: hidden; vertical-align: top; }
+    .word-reveal .w-i {
+      display: inline-block;
+      transform: translateY(115%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--wd, 0s);
+      will-change: transform;
+    }
+    .word-reveal.is-visible .w-i { transform: none; }
+
+    /* Magnetic button smoothing */
+    .btn-toggle { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), background 0.15s, border-color 0.15s; }
+
+    @keyframes pageIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .page.active { animation: pageIn 0.4s ease both; }
+
+    /* Press micro-interactions */
+    .card { transition: transform 0.12s ease; }
+    .card:active { transform: scale(0.97); }
+    .btn-toggle:active { transform: scale(0.97); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.reveal-hero { opacity: 1; transform: none; transition: none; }
+      .word-reveal .w-i { transform: none; transition: none; }
+      .page.active { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <button class="nav-logo" onclick="showHome()">Vincent Lee</button>
+      <button class="btn-toggle" id="nav-btn" onclick="togglePage()">His info</button>
+    </div>
+  </nav>
+
+  <!-- Home -->
+  <div id="home-page" class="page active">
+    <div class="container">
+      <div class="landing">
+        <div class="hero">
+          <div class="hero-copy">
+            <p>Vincent began his career in Australia as a chemistry lab assistant in the mining industry. After pivoting to UX design in the US, he brings a research driven approach to creating accessible experiences.</p>
+            <p>He has since worked with <a class="ln ln-instrument" href="https://www.instrument.com/" target="_blank" rel="noopener">@Instrument</a>, <a class="ln ln-nasa" href="https://www.nasa.gov/goddard" target="_blank" rel="noopener">@NASA Goddard Space Flight Center</a>, <a class="ln ln-peloton" href="https://www.onepeloton.com/" target="_blank" rel="noopener">@Peloton Interactive</a>, and <a class="ln ln-river" href="https://river.com/" target="_blank" rel="noopener">@River Financial</a>.</p>
+          </div>
+        </div>
+
+        <div class="works-section landing-works">
+          <div class="cards-grid">
+          <div class="card">
+            <div class="card-img" style="background-image:url('assets/img-7f1ac66c9ee9.webp')"></div>
+            <div class="card-title">River's sign up redesign</div>
+            <div class="card-desc">Streamlined the onboarding journey to first buy</div>
+          </div>
+          <div class="card" onclick="showProject('river-web')" style="cursor:pointer">
+            <div class="card-img" style="background-image:url('assets/img-1ab82f8797ea.webp')"></div>
+            <div class="card-title">River's marketing website</div>
+            <div class="card-desc">Building the world's most trusted financial institution</div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="works-section previous-works">
+        <div class="section-label">Previous works</div>
+        <div class="cards-grid">
+          <div class="card" onclick="showProject('nasa')" style="cursor:pointer">
+            <div class="card-img" style="background-image:url('assets/img-49ee5ad9116b.webp')"></div>
+            <div class="card-title">NASA ICE-2 SlideRule</div>
+            <div class="card-desc">Surfaced scientific evidence through a data processing tool</div>
+          </div>
+          <div class="card" onclick="showProject('salesforce')" style="cursor:pointer">
+            <div class="card-img" style="background-image:url('assets/img-533e0c18c83f.webp')"></div>
+            <div class="card-title">Salesforce Plus streaming services</div>
+            <div class="card-desc">Increased scannability and engagement with a card system</div>
+          </div>
+          <div class="card" onclick="showProject('mars-rover')" style="cursor:pointer">
+            <div class="card-img" style="background-image:url('assets/img-808236581441.webp')"></div>
+            <div class="card-title">Mars Rover - Esque</div>
+            <div class="card-desc">An immersive HUD/FUI concept for storytelling</div>
+          </div>
+          <div class="card" onclick="showProject('peloton')" style="cursor:pointer">
+            <div class="card-img" style="background-image:url('assets/img-0affa627aed7.webp')"></div>
+            <div class="card-title">Peloton Just workout mode</div>
+            <div class="card-desc">Enabled workout tracking in offline environments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+    <div id="info-page" class="page">
+    <div class="container">
+      <div class="info-wrap">
+
+        <div class="info-text-section">
+          <h2 class="info-hero-heading">I'm a product designer working on experiences from acquisition to activation to engagement to drive business growth</h2>
+          <div class="info-bio-col">
+            <p class="info-bio-text">With a background in UX design and my own interested in financial sector, I enjoyed to turn complex information into experiences that feels trustworthy and delightful.</p>
+            <br>
+            <p class="info-bio-text">Before joining River's product team, I've worked as a web designer, UX strategist and chemistry lab assistant. I've had the pleasure of working with clients across a range of fields in the past.</p>
+          </div>
+        </div>
+
+        <div class="logos-section">
+          <div class="logo-row">
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-4b1f35e27f9b.webp"  alt="ICESat-2"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-80554dd5c9e2.webp" alt="River"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-7822f782df16.webp" alt="Peloton"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-d6b7e7a8777f.webp" alt="Salesforce+"></div>
+          </div>
+          <div class="logo-row">
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-bd4459653a15.webp" alt="Housewell"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-54a497a4238d.webp" alt="Second Nature"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-d56320a43cd9.webp" alt="Startup"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-c9571fda6b0f.webp" alt="Glencore"></div>
+          </div>
+          <div class="logo-row">
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-0849d1bd66fe.webp" alt="Instrument"></div>
+            <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/img-c3f6a7f51b79.webp" alt="Electric Air"></div>
+          </div>
+        </div>
+
+        <div class="info-links-section">
+          <a class="info-link" href="#" target="_blank" rel="noopener">His resume</a>
+          <a class="info-link" href="https://www.linkedin.com/in/bvincentlee/" target="_blank" rel="noopener">His LinkedIn</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: Mars Rover - Esque -->
+  <div id="project-mars-rover" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Hero -->
+        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-2a6d48edb5e6.webp" alt="Mars Rover Esque hero" /></div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">Mars Rover &ndash; Esque</div>
+            <div class="project-subtitle">An immersive HUD/FUI concept for storytelling</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-51279185255d.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Fun, tool learning</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">2 months</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2019</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Concept -->
+        <div class="project-section project-section--concept">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Concept</div>
+              <p class="project-concept-body">The concept is stimulated a HUD/FUI system adopting different situations while a Mars Rover inbounding to Mars. It starts from the pilot&rsquo;s perspective involved with visual elements in various stages of each interface design.<br><br>Each design serves a specific purpose to surface situational information and data to help the pilot perform through a unified visual language.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="" /></div>
+          </div>
+        </div>
+
+        <!-- 4. Asset development -->
+        <div class="project-section">
+          <div class="project-section-title">Asset development</div>
+          <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c35f66ed34e2.webp" alt="Asset development" /></div>
+        </div>
+
+        <!-- 5. Tier System -->
+        <div class="project-section">
+          <div class="project-section-title">Tier System</div>
+          <div class="project-caption-stack">
+          <div class="project-figure-block">
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c3a9cee398e8.webp" alt="Tier 3" /></div>
+            <div class="project-figure-caption">Tier 3 (full on)</div>
+          </div>
+          <div class="project-mode-grid">
+            <div class="project-figure-block">
+              <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="Tier 2" /></div>
+              <div class="project-figure-caption">Tier 2 (with warming elements)</div>
+            </div>
+            <div class="project-figure-block">
+              <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-902f5eddcf30.webp" alt="Tier 1" /></div>
+              <div class="project-figure-caption">Tier 1 (foundational elements)</div>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- 6. Mode -->
+        <div class="project-section">
+          <div class="project-section-title">Mode</div>
+          <div class="project-mode-grid">
+            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-57686dac7a24.webp" alt="" /></div>
+            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-6c01deb5c545.webp" alt="" /></div>
+            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-fa2597b24934.webp" alt="" /></div>
+            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-1b5410e90203.webp" alt="" /></div>
+          </div>
+          <div class="project-caption-stack">
+          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="Loading" /></div><div class="project-figure-caption">Loading</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-230787899d5f.webp" alt="Cruising" /></div><div class="project-figure-caption">Cruising</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-51279185255d.webp" alt="Landing" /></div><div class="project-figure-caption">Landing</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-f94d03c008d0.webp" alt="Inbound" /></div><div class="project-figure-caption">Inbound</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ecf18242ad14.webp" alt="Error" /></div><div class="project-figure-caption">Error</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: Salesforce+ Streaming Experience -->
+  <div id="project-salesforce" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Hero -->
+        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-affaf43fe6fb.webp" alt="Salesforce+ streaming hero" /></div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">Salesforce+ Streaming Experience</div>
+            <div class="project-subtitle">Increased scannability and engagement with a card system</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-10c4dd7e8eec.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Salesforce+ (Client)<br>With Instrument</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Strategy<br>(Intern)</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2022</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Design -->
+        <div class="project-section">
+          <div class="project-section-title">Design</div>
+          <div class="project-caption-stack">
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ac1c63d37f28.webp" alt="Design 1" /></div>
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-9b85cce29fc6.webp" alt="Design 2" /></div>
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-39b677dbee7d.webp" alt="Design 3" /></div>
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-91a3ac2983a9.webp" alt="Design 4" /></div>
+            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-fa83fa65e6f8.webp" alt="Design 5" /></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: Peloton Just Work Out Offline Mode -->
+  <div id="project-peloton" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Hero -->
+        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-576e5fd186ce.webp" alt="Peloton offline mode hero" /></div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">Peloton Just Work Out Offline Mode</div>
+            <div class="project-subtitle">Enabled workout tracking in offline environments</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-4211d850f77e.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-ce1974524411.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Peloton app</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">6 weeks</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Design<br>(Intern)</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2023</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Problem -->
+        <div class="project-section project-section--concept">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Problem</div>
+              <p class="project-concept-body">Just Work Out is a popular Peloton App feature that allows users to conduct workouts and track their metrics on their device. However, without an internet connection, clients either can&rsquo;t start a workout or risk losing their in-progress workout data.<br><br>Supporting the Just Work Out offline feature has been a strong ask from clients.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-a44797f202bc.webp" alt="Problem" /></div>
+          </div>
+        </div>
+
+        <!-- 4. Investigation -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Investigation</div>
+              <p class="project-concept-body">Ensuring a consistent experience across different edge cases required investigation into potential checkpoints that could affect the flow. I worked closely with engineers to define the efficient way to cover all scenarios with the solution.<br><br>The solution is allowing device to cache data once a client initiates a workout. Once ending the workout, the device determines whether to continue caching or upload the workout details and sync them to the client&rsquo;s account.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-9f6cd7cdae2c.webp" alt="Investigation" /></div>
+          </div>
+        </div>
+
+        <!-- 5. Outcome -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Outcome</div>
+              <p class="project-concept-body">I think the design challenge here wasn&rsquo;t aesthetic, it was about mapping every edge case to ensure the experience stayed clear and consistent regardless of connection state.<br><br>The goal was to communicate workout status accurately while staying within the existing design system, keeping the solution lightweight enough to ship quickly.</p>
+            </div>
+            <div class="project-media-col">
+              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-014ff8052916.webp" alt="Outcome 1" /></div>
+              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-52c92601a6e7.webp" alt="Outcome 2" /></div>
+              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-3ad5f7d62268.webp" alt="Outcome 3" /></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: NASA ICE-2 SlideRule -->
+  <div id="project-nasa" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Composite Hero -->
+        <div class="nasa-hero">
+          <img loading="lazy" decoding="async" class="nasa-hero-bg" src="assets/img-80cda55d21fb.webp" alt="" />
+          <div class="nasa-hero-overlay"></div>
+          <img loading="lazy" decoding="async" class="nasa-hero-mac" src="assets/img-aabd08e4d5e6.webp" alt="" />
+          <img loading="lazy" decoding="async" class="nasa-hero-screen" src="assets/img-fccd99387795.webp" alt="NASA ICE-2 SlideRule tool" />
+        </div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">NASA ICE-2 SlideRule</div>
+            <div class="project-subtitle">Surfaced scientific evidence through a data processing tool</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-3fd59326ebcd.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Nasa Goddard Space Flight Center</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Lead</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2023</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. What's ICE-2 does? -->
+        <div class="project-section project-section--concept">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">What&rsquo;s ICE-2 does?</div>
+              <p class="project-concept-body">It&rsquo;s a NASA satellite that shoots 10,000 laser pulses per second at Earth&rsquo;s surface to precisely measure elevation, mainly tracking how ice sheets, glaciers, and sea ice are changing over time.<br><br>It&rsquo;s how scientists monitor ice loss from space to understand the effects of climate change.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-d23934184cf6.webp" alt="ICE-2 satellite" /></div>
+          </div>
+        </div>
+
+        <!-- 4. What's ICE-2 SlideRule? -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">What&rsquo;s ICE-2 SlideRule?</div>
+              <p class="project-concept-body">A tool that lets user ask NASA&rsquo;s ICE-2 satellite data questions and get answers back quickly without having to download massive files or do heavy processing yourself. You tell it what area of the Earth you&rsquo;re interested in, and it goes and pulls the relevant data from NASA&rsquo;s archives and sends back just what you need.<br><br>The photo on the right shows the tool in its original state, before I proposed improvements through the SCADpro program.</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-1b4a20bbca38.webp" alt="Pervious version of SlideRule" /></div><div class="project-figure-caption">Pervious version of SlideRule</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Context -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Context</div>
+              <p class="project-concept-body">This project aims to lower the barrier for the public to access valuable satellite data, while also designing a technical mode that improves the workflow for research purposes, starting from a deep dive into understanding how scientists currently use the tool.</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="Pre-populated results for popular areas to encourage the public to explore the data" /></div><div class="project-figure-caption">Pre-populated results for popular areas to encourage the public to explore the data</div></div>
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-bb22e17db9b7.webp" alt="Advanced mode" /></div><div class="project-figure-caption">Advanced mode for technical uses</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Design - Advanced mode -->
+        <div class="project-section">
+          <div class="project-section-title">Design - Advanced mode</div>
+          <div class="project-caption-stack">
+            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-37a37f99d5c8.webp" alt="Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates" /></div><div class="project-figure-caption">Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates</div></div>
+            <div class="project-two-col">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ca46f1411e2e.webp" alt="Designed to integrate other data libraries" /></div><div class="project-figure-caption">Designed to integrate other data libraries</div></div>
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-0a9af55f6208.webp" alt="Panel detailed" /></div><div class="project-figure-caption">Panel detailed</div></div>
+            </div>
+            <div class="project-two-col">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-23b3fd774a7a.webp" alt="Result levels (before)" /></div><div class="project-figure-caption">Result levels (before)</div></div>
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="Result levels (after)" /></div><div class="project-figure-caption">Result levels (after)</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Feels like a dream -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Feels like a dream</div>
+              <p class="project-concept-body">OK, It&rsquo;s such a precious opportunity to be solving a real problem with NASA. From first proposing the idea, to speaking with the ICESat-2 team, to visiting Goddard Space Flight Center to present the design and work alongside their engineers to develop the project, everything feels surreal and I&rsquo;m incredibly excited to be part of this.<br><br>Excited to see our design result to be part of <a class="info-link" href="https://icesat-2.gsfc.nasa.gov/sites/default/files/users/user134/SlideRule%20-%20Bathymetry%20Workshop%20-%20March%202025.pdf" target="_blank" rel="noopener">NASA ICESat-2 mission documentation</a>!</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-3e6dbf5fe6ad.webp" alt="Research" /></div><div class="project-figure-caption">Research</div></div>
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-8ff6fe368fe3.webp" alt="Visiting Maryland - Goddard Space Flight Center" /></div><div class="project-figure-caption">Visiting Maryland - Goddard Space Flight Center</div></div>
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-8f4461925415.webp" alt="Web page" /></div><div class="project-figure-caption">Web page</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: River's Marketing website -->
+  <div id="project-river-web" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Hero -->
+        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-e30736465fef.webp" alt="River marketing website hero" /></div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">River&rsquo;s Marketing website</div>
+            <div class="project-subtitle">Shaped the brand and business representation</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-ffd7011e0996.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">river.com</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">Product design<br>Development</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2026</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Overview -->
+        <div class="project-section project-section--concept">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Overview</div>
+              <p class="project-concept-body">A full River.com revamp across 20 pages to modernize the brand within the rebrand work, resolve visual inconsistency, improve accessibility and SEO, and build a scalable front end system from the ground up, reducing development time while keeping layout consistency across the website.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-dc66851fbe23.webp" alt="Overview" /></div>
+          </div>
+        </div>
+
+        <!-- 4. The Problem -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">The Problem</div>
+              <p class="project-concept-body">The pervious River.com has mismatched components and an outdated visual language made the site hard to maintain and harder to make a strong first impression on prospective clients.<br><br>The content was identically repetitive across each page, causing information overload and making it difficult to convey the brand and value prop throughout the website.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-68116068404b.webp" alt="The Problem" /></div>
+          </div>
+        </div>
+
+        <!-- 5. Design -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Design</div>
+              <p class="project-concept-body">After aligning with our lead brand designer, we defined a card and section system that could be adopted across each page while delivering the new IA. I also worked closely with marketing team to refine the content strategy,<br><br>One thing worth calling out, I recommended adopting a full-width section on the homepage for flexible campaign rotation, and assisted with the visual asset production alongside the lead brand designer.</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure-block"><div class="project-figure project-figure--full project-figure--fade"><img loading="lazy" decoding="async" src="assets/img-a9f6473b2937.webp" alt="Home page" /></div><div class="project-figure-caption">Home page</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Building It -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Building It</div>
+              <p class="project-concept-body">We eventually narrowed down to 14 pages to build. I worked with another design technologist to execute the development.<br><br>We focused on building out the section components and card system as the foundation, while the utilizing the new rebrand tokens, and have all the pages behind a feature flag.<br><br>The foundational piece took us 3 - 4 days to get right, with support from a senior engineer to review the code. Once the system was in place, it enabled the two of us to build pages like Lego, we finishing a page in 2 &ndash; 5 hours depending on the number of sections.</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c8bb9149a26b.webp" alt="File ready for dev" /></div><div class="project-figure-caption">File ready for dev</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Outcome -->
+        <div class="project-section">
+          <div class="project-section-title">Outcome</div>
+          <div class="project-two-col">
+            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-04b2804173d0.webp" alt="Bitcoin price page" /></div><div class="project-figure-caption">Bitcoin price page</div></div>
+            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7b70830b9ee1.webp" alt="Interest page" /></div><div class="project-figure-caption">Interest page</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <script>
+    const homePage = document.getElementById('home-page');
+    const infoPage = document.getElementById('info-page');
+    const navBtn   = document.getElementById('nav-btn');
+
+    function showPage(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      page.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      resetReveals(page);
+      requestAnimationFrame(function(){
+        updateReveal();
+        requestAnimationFrame(function(){ revealInView(page); });
+      });
+      setTimeout(function(){ updateReveal(); revealInView(page); }, 60);
+    }
+
+    function togglePage() {
+      if (homePage.classList.contains('active')) {
+        showPage(infoPage);
+        navBtn.textContent = 'His works';
+      } else {
+        showPage(homePage);
+        navBtn.textContent = 'His info';
+      }
+    }
+
+    function showHome() {
+      showPage(homePage);
+      navBtn.textContent = 'His info';
+    }
+
+    function showProject(id) {
+      var page = document.getElementById('project-' + id);
+      if (page) showPage(page);
+      navBtn.textContent = 'Other works';
+    }
+
+    // Scroll-linked motion: intro text fades/lifts away while the first project
+    // row grows from 0.75 to full size as it scrolls up into focus.
+    const revealSections = Array.from(document.querySelectorAll('.landing-works .cards-grid'));
+    const heroEl = document.querySelector('#home-page .hero');
+    const navEl = document.querySelector('nav');
+    let lastY = 0;
+    let ticking = false;
+
+    function updateReveal() {
+      const vh = window.innerHeight;
+      const doc = document.documentElement;
+      const scrolled = window.scrollY || doc.scrollTop || 0;
+      const maxScroll = Math.max(0, doc.scrollHeight - vh);
+
+      // Hide the top nav when scrolling down, reveal it when scrolling up.
+      if (navEl) {
+        if (scrolled <= 10) navEl.classList.remove('nav-hidden');
+        else if (scrolled > lastY + 4) navEl.classList.add('nav-hidden');
+        else if (scrolled < lastY - 4) navEl.classList.remove('nav-hidden');
+      }
+      lastY = scrolled;
+
+      const startLine = vh * 0.82;  // viewport line where the row begins to grow
+      const fullLine  = vh * 0.66;  // viewport line where it's full size
+
+      // Intro text fades and lifts away as you scroll into the work.
+      if (heroEl) {
+        const fade = Math.max(0, Math.min(1, 1 - scrolled / (vh * 0.5)));
+        heroEl.style.opacity = fade.toFixed(3);
+        heroEl.style.transform = `translateY(${(-scrolled * 0.2).toFixed(1)}px)`;
+      }
+
+      revealSections.forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        const centerDoc = scrolled + r.top + r.height / 2; // absolute position in doc
+
+        // scroll positions at which this row's center crosses each line
+        const scrollAtStart = centerDoc - startLine;
+        // Rows near the page bottom can't be scrolled far enough to reach the
+        // focus line, so cap their target at the furthest the page can scroll —
+        // they finish growing right as you reach the bottom.
+        const scrollAtFull = Math.min(centerDoc - fullLine, maxScroll);
+
+        let p;
+        const denom = scrollAtFull - scrollAtStart;
+        if (denom <= 0) p = scrolled >= scrollAtStart ? 1 : 0;
+        else p = (scrolled - scrollAtStart) / denom;
+        p = Math.max(0, Math.min(1, p));
+
+        sec.style.setProperty('--reveal', p.toFixed(3));
+      });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateReveal);
+      }
+    }
+
+
+
+    // ─── Scroll reveal (Apple-style fade-up + stagger) ──
+    // Tag hero + each section's content blocks; stagger siblings within a section.
+    document.querySelectorAll('.project-wrap').forEach(function(wrap){
+      Array.from(wrap.children).forEach(function(child){
+        if (child.classList.contains('project-section')) {
+          var units = [];
+          Array.from(child.children).forEach(function(sub){
+            if (sub.classList.contains('project-concept-split')) {
+              Array.from(sub.children).forEach(function(u){ units.push(u); });
+            } else if (!sub.classList.contains('project-title-block')) {
+              units.push(sub);
+            }
+          });
+          units.forEach(function(u, i){
+            u.classList.add('reveal');
+            u.style.setProperty('--reveal-delay', (i * 0.09) + 's');
+          });
+        } else {
+          child.classList.add('reveal');      // hero
+          child.classList.add('reveal-hero');
+        }
+      });
+    });
+
+    var revealIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('is-visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ revealIO.observe(el); });
+
+    function resetReveals(scope){
+      scope.querySelectorAll('.reveal, .reveal-word').forEach(function(el){ el.classList.remove('is-visible'); });
+    }
+    function revealInView(scope){
+      var vh = window.innerHeight;
+      scope.querySelectorAll('.reveal, .reveal-word').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > 0) el.classList.add('is-visible');
+      });
+    }
+
+    // ─── Word-by-word headline reveal ──────────────────
+    function splitWords(el){
+      if (el.dataset.split) return;
+      el.dataset.split = '1';
+      var nodes = Array.from(el.childNodes);
+      el.innerHTML = '';
+      var wi = 0;
+      nodes.forEach(function(node){
+        if (node.nodeType === 3) {               // text node -> split into words
+          node.textContent.split(/(\s+)/).forEach(function(tok){
+            if (tok.trim() === '') { el.appendChild(document.createTextNode(tok)); return; }
+            var outer = document.createElement('span'); outer.className = 'w';
+            var inner = document.createElement('span'); inner.className = 'w-i';
+            inner.textContent = tok;
+            inner.style.setProperty('--wd', (wi * 0.035) + 's'); wi++;
+            outer.appendChild(inner); el.appendChild(outer);
+          });
+        } else if (node.nodeType === 1) {        // element (e.g. <a>) -> animate as one unit
+          var outer = document.createElement('span'); outer.className = 'w';
+          var inner = document.createElement('span'); inner.className = 'w-i';
+          inner.style.setProperty('--wd', (wi * 0.035) + 's'); wi++;
+          inner.appendChild(node);
+          outer.appendChild(inner); el.appendChild(outer);
+        }
+      });
+      el.classList.add('word-reveal', 'reveal-word');
+    }
+    document.querySelectorAll('.project-title').forEach(splitWords);
+    document.querySelectorAll('.reveal-word').forEach(function(el){ revealIO.observe(el); });
+    // also ensure subtitle fades in
+    document.querySelectorAll('.project-subtitle').forEach(function(el){ el.classList.add('reveal'); el.style.setProperty('--reveal-delay','0.15s'); revealIO.observe(el); });
+
+    // ─── Magnetic buttons (hover-capable devices only) ──
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.btn-toggle').forEach(function(btn){
+        btn.addEventListener('mousemove', function(e){
+          var r = btn.getBoundingClientRect();
+          var x = e.clientX - (r.left + r.width / 2);
+          var y = e.clientY - (r.top + r.height / 2);
+          btn.style.transform = 'translate(' + (x * 0.35) + 'px,' + (y * 0.35) + 'px)';
+        });
+        btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
+      });
+    }
+
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateReveal();
+  </script>
+
+
+</body>
+</html>
