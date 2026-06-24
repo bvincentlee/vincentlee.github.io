@@ -609,7 +609,7 @@
 
         <div class="works-section landing-works">
           <div class="cards-grid">
-          <div class="card">
+          <div class="card" onclick="showProject('signup')" style="cursor:pointer">
             <div class="card-img" style="background-image:url('assets/img-7f1ac66c9ee9.webp')"></div>
             <div class="card-title">River's sign up redesign</div>
             <div class="card-desc">Streamlined the onboarding journey to first buy</div>
@@ -687,6 +687,90 @@
         <div class="info-links-section">
           <a class="info-link" href="assets/Resume.pdf" target="_blank" rel="noopener">His resume</a>
           <a class="info-link" href="https://www.linkedin.com/in/bvincentlee/" target="_blank" rel="noopener">His LinkedIn</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Project: River's Sign Up Redesign -->
+  <div id="project-signup" class="page">
+    <div class="container">
+      <div class="project-wrap">
+
+        <!-- 1. Hero -->
+        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/signup-hero.webp" alt="River sign up redesign hero" /></div>
+
+        <!-- 2. Title + image/meta -->
+        <div class="project-section" style="gap:16px">
+          <div class="project-title-block">
+            <div class="project-title">River&rsquo;s sign up redesign</div>
+            <div class="project-subtitle">Streamlined the onboarding journey to first buy</div>
+          </div>
+          <div class="project-split">
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/signup-meta.webp" alt="" /></div>
+            <div class="project-meta">
+              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">river.com/signup</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">7 months</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">Product design</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Platform</div><div class="project-meta-value">Desktop, mobile web</div></div>
+              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2025&ndash;2026</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Problem -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Problem</div>
+              <p class="project-concept-body">The previous sign up flow squeezed every question into just three steps. On flow it looked short, but each step carried four or five inputs at once, which made the experience hard to digest. Instead of feeling digestible, it felt heavy, information overload right at the moment clients were deciding whether to trust us, and that showed up as a high drop off rate before they create their account.<br><br>The copy didn&rsquo;t help either. It read robotic and transactional, which put distance between River and the client. For a product where the whole goal is to feel trustworthy, the onboarding ended up feeling cold and bitter.</p>
+            </div>
+            <div class="project-figure project-figure--wide" style="display:flex; gap:0; border-radius:8px; overflow:hidden;">
+              <div style="background:#1f1f1f; padding:23px; border-radius:8px 0 0 8px; display:flex; align-items:center;">
+                <img loading="lazy" decoding="async" src="assets/signup-problem-left.webp" alt="Old sign up flow" style="border-radius:8px; height:100%; object-fit:cover;" />
+              </div>
+              <div style="background:#1f1f1f; padding:23px 23px 23px 0; border-radius:0 8px 8px 0; display:flex; align-items:center;">
+                <img loading="lazy" decoding="async" src="assets/signup-problem-right.webp" alt="Old sign up flow" style="border-radius:8px; height:100%; object-fit:cover;" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Design -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Design</div>
+              <p class="project-concept-body">On the design side, I broke the flow into a more natural, conversational experience: asking for the information at the right moment instead of all at once. The journey moved through three phases: creating the account, verifying the login information, and collecting PII. Each step asked for less, so progress felt steady instead of overwhelming.<br><br>I also rebuilt the input experience; inputs now validate well as clients type, addresses are found through search instead of manual entry, and area code and state are handled with dropdowns rather than free text. Small changes, but together they made each step feel faster to clear. The whole interaction should feel snappy, easy to keep moving, so crossing the finish line of onboarding never feels like work.</p>
+            </div>
+            <div class="project-media-col project-media-col--gap40">
+              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/signup-design-top.webp" alt="Design — new sign up screens" style="border-radius:8px 8px 0 0;" /></div>
+              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/signup-design-bottom.webp" alt="Design — input patterns" style="border-radius:0 0 8px 8px;" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Challenges -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Challenges</div>
+              <p class="project-concept-body">The first was technical. The sign up flow needed a full overhaul: the engineering team put in serious effort to retire the old LiveView stack and rebuild everything in React. That rebuild let us equip the flow with a state machine, so clients can move back to a previous step whenever they need to. At the same time, we were in the middle of a brand redesign, which meant every screen I designed had to keep pace with evolving fonts, styles, and components, and stay consistent as the brand itself was still changing underneath us.<br><br>The second was the sheer number of edge cases. Onboarding is full of them: what happens when a client&rsquo;s identity can&rsquo;t be verified, when they hit an age limit, an SMS limit, or a password rule, when an address doesn&rsquo;t meet requirements. Each path had to be investigated and designed for, so the experience stayed clear and trustworthy no matter where a client landed.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/signup-challenges.webp" alt="Challenges — edge cases" /></div>
+          </div>
+        </div>
+
+        <!-- 6. Next step -->
+        <div class="project-section">
+          <div class="project-concept-split">
+            <div class="project-concept-text">
+              <div class="project-section-title">Next step</div>
+              <p class="project-concept-body">We&rsquo;ve just shipped the mobile web experience, and the native experience is on the way. Working alongside brand and marketing, I&rsquo;ve been shaping the details that make native feel more delightful and snappy: the logged out experience, animations, custom illustrations for identity verification, a notification upsell, and a Face ID upsell etc.<br><br>We&rsquo;re also exploring moving identity verification earlier in the journey. If a client completes IDV up front, they could skip the PII steps entirely and shortcut straight to the home page turning verification from a hurdle into a fast lane.</p>
+            </div>
+            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/signup-nextstep.webp" alt="Next step — native experience" /></div>
+          </div>
         </div>
 
       </div>
