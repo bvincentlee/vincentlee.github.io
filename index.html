@@ -1307,7 +1307,7 @@
       showPage(location.pathname.replace(/\/+$/, '') === '/about' ? infoPage : homePage, location.pathname);
     }
 
-    // 404.html sends deep links here as /?route=<path>; restore the real path before routing
+    // about.html and 404.html send deep links here as /?route=<path>; restore the real path before routing
     var redirectedRoute = new URLSearchParams(location.search).get('route');
     if (redirectedRoute) history.replaceState(null, '', redirectedRoute);
     if (location.pathname !== '/') routeFromLocation();
