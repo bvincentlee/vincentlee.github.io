@@ -153,11 +153,12 @@
       vertical-align: -0.16em;
       line-height: 1;
       font-weight: 500;
+      color: rgba(18, 18, 18, 0.5);
       text-decoration: none;
       white-space: nowrap;
-      transition: background-color 0.2s ease;
+      transition: color 0.2s ease;
     }
-    .bio a.chip:hover { color: inherit; background: var(--fill-2); }
+    .bio a.chip:hover, .bio a.chip--current { color: var(--fg-1); }
     .bio a.chip img { display: block; width: 0.9em; height: 0.9em; border-radius: 0.18em; }
 
     .works { padding-bottom: 128px; }
@@ -526,7 +527,7 @@
       <section class="intro">
         <div class="bio">
           <p class="enter" style="--i:0">Vincent started his career in a chemistry lab in Australia. Now he designs financial products in New York.</p>
-          <p class="enter" style="--i:1">He brings a scientist&rsquo;s curiosity to complex systems, currently shaping account architecture and onboarding at <a class="chip" href="https://river.com/" target="_blank" rel="noopener"><img src="assets/river-icon.svg" alt="" width="24" height="24" />River Financial</a>. He has also designed for <a href="https://www.nasa.gov/goddard" target="_blank" rel="noopener">NASA&nbsp;Goddard Space Flight Center</a>, <a href="https://www.onepeloton.com/" target="_blank" rel="noopener">Peloton</a> and <a href="https://www.instrument.com/" target="_blank" rel="noopener">Instrument</a>.</p>
+          <p class="enter" style="--i:1">He brings a scientist&rsquo;s curiosity to complex systems, currently shaping account architecture and onboarding at <a class="chip chip--current" href="https://river.com/" target="_blank" rel="noopener"><img src="assets/river-icon.svg" alt="" width="24" height="24" />River Financial</a>. He has also designed for <a class="chip" href="https://www.nasa.gov/goddard" target="_blank" rel="noopener"><img src="assets/nasa-icon.svg" alt="" width="24" height="24" />NASA Goddard Space Flight Center</a>, <a class="chip" href="https://www.onepeloton.com/" target="_blank" rel="noopener"><img src="assets/peloton-icon.svg" alt="" width="24" height="24" />Peloton</a> and <a class="chip" href="https://www.instrument.com/" target="_blank" rel="noopener"><img src="assets/instrument-icon.svg" alt="" width="24" height="24" />Instrument</a>.</p>
         </div>
       </section>
 
