@@ -162,7 +162,8 @@
     .bio .chip-wrap { white-space: nowrap; }
     .bio a.chip--current { color: var(--fg-1); }
     @media (min-width: 820px) { .bio .chip-group { white-space: nowrap; } }
-    .bio a.chip img { display: block; width: 0.9em; height: 0.9em; border-radius: 0.18em; }
+    .bio a.chip img { display: block; width: 0.9em; height: 0.9em; border-radius: 0.18em; opacity: 0.75; transition: opacity 0.2s ease; }
+    .bio a.chip:hover img, .bio a.chip--current img { opacity: 1; }
 
     .works { padding-bottom: 128px; }
 
