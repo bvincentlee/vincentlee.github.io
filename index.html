@@ -601,7 +601,7 @@
 
   <header class="topbar">
     <button class="brand" onclick="showHome()">Vincent Lee</button>
-    <button class="menu-btn" onclick="showInfo()">About me</button>
+    <button class="menu-btn" onclick="toggleInfo()">About me</button>
   </header>
 
   <div class="edge-blur" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div></div>
@@ -665,7 +665,7 @@
       <div class="info-wrap">
 
         <div class="info-about">
-          <div class="info-label">About</div>
+          <div class="info-label">About me</div>
           <div class="info-bio-col">
             <p class="info-bio-text">I'm a product designer working on experiences from acquisition to activation to engagement to drive business growth</p>
             <p class="info-bio-text">With a background in UX design and my own interest in the financial sector, I enjoy turning complex information into experiences that feel trustworthy and delightful.</p>
@@ -1207,12 +1207,14 @@
     <script>
     const homePage = document.getElementById('home-page');
     const infoPage = document.getElementById('info-page');
+    const menuBtn = document.querySelector('.menu-btn');
 
     function showPage(page, path) {
       path = path || '/';
       if (location.pathname !== path) history.pushState(null, '', path);
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       page.classList.add('active');
+      menuBtn.textContent = page === infoPage ? 'Selected work' : 'About me';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       resetReveals(page);
       requestAnimationFrame(function(){
@@ -1265,6 +1267,7 @@
 
     function showHome() { showPage(homePage); }
     function showInfo() { showPage(infoPage, '/about'); }
+    function toggleInfo() { infoPage.classList.contains('active') ? showHome() : showInfo(); }
 
     function showProject(id) {
       var page = document.getElementById('project-' + id);
