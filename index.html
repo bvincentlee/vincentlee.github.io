@@ -206,11 +206,10 @@
     .info-bio-text { font-size: 18px; line-height: 26px; color: var(--fg-1); }
 
     .info-facts { grid-column: 1; grid-row: 1 / span 2; display: flex; flex-direction: column; gap: 96px; }
-    .fact p, .fact li { font-size: 17px; line-height: 24px; font-weight: 500; list-style: none; }
+    .fact, .timeline-item { display: flex; flex-direction: column; gap: 8px; }
+    .fact p, .fact li, .timeline-item p { font-size: 17px; line-height: 24px; font-weight: 500; list-style: none; }
 
     .timeline { display: flex; flex-direction: column; gap: 32px; }
-    .timeline-item p { font-size: 17px; line-height: 24px; }
-    .timeline-item .company { font-weight: 600; }
 
     /* Logo section */
     .logos-section {
@@ -676,8 +675,10 @@
         <div class="info-facts">
           <div class="fact">
             <div class="info-label">Education</div>
-            <p>B.F.A. User Experience Design</p>
-            <p>Savannah College of Art and Design</p>
+            <div>
+              <p>B.F.A. User Experience Design</p>
+              <p>Savannah College of Art and Design</p>
+            </div>
           </div>
           <div class="fact">
             <div class="info-label">Expertise</div>
@@ -691,18 +692,20 @@
           </div>
           <div class="fact">
             <div class="info-label">Recognition</div>
-            <p>IDSA Silver Award, 2024</p>
-            <p>Red Dot Design Award, 2023</p>
-            <p>The Rookies, Rookie of the Year Finalist, 2023</p>
+            <div>
+              <p>IDSA Silver Award, 2024</p>
+              <p>Red Dot Design Award, 2023</p>
+              <p>The Rookies, Rookie of the Year Finalist, 2023</p>
+            </div>
           </div>
         </div>
 
         <div class="timeline">
-          <div class="timeline-item"><div class="info-label">2025&mdash;Present</div><p class="company">River</p><p>Product Designer II</p></div>
-          <div class="timeline-item"><div class="info-label">2024&mdash;2025</div><p class="company">Second Nature</p><p>Product Designer</p></div>
-          <div class="timeline-item"><div class="info-label">2023</div><p class="company">Peloton</p><p>Product Design Associate</p></div>
-          <div class="timeline-item"><div class="info-label">2022&mdash;2023</div><p class="company">NASA Goddard Space Flight Center</p><p>UX Designer</p></div>
-          <div class="timeline-item"><div class="info-label">2022</div><p class="company">Instrument</p><p>UX Strategy Intern</p></div>
+          <div class="timeline-item"><div class="info-label">2025&mdash;Present</div><div><p>River</p><p>Product Designer II</p></div></div>
+          <div class="timeline-item"><div class="info-label">2024&mdash;2025</div><div><p>Second Nature</p><p>Product Designer</p></div></div>
+          <div class="timeline-item"><div class="info-label">2023</div><div><p>Peloton</p><p>Product Design Associate</p></div></div>
+          <div class="timeline-item"><div class="info-label">2022&mdash;2023</div><div><p>NASA Goddard Space Flight Center</p><p>UX Designer</p></div></div>
+          <div class="timeline-item"><div class="info-label">2022</div><div><p>Instrument</p><p>UX Strategy Intern</p></div></div>
         </div>
 
         <div class="logos-section">
@@ -1204,7 +1207,9 @@
     const homePage = document.getElementById('home-page');
     const infoPage = document.getElementById('info-page');
 
-    function showPage(page) {
+    function showPage(page, path) {
+      path = path || '/';
+      if (location.pathname !== path) history.pushState(null, '', path);
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       page.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1258,7 +1263,7 @@
     updateGrow();
 
     function showHome() { showPage(homePage); }
-    function showInfo() { showPage(infoPage); }
+    function showInfo() { showPage(infoPage, '/about'); }
 
     function showProject(id) {
       var page = document.getElementById('project-' + id);
@@ -1297,6 +1302,16 @@
     function resetReveals(scope){
       scope.querySelectorAll('.reveal, .reveal-word').forEach(function(el){ el.classList.remove('is-visible'); });
     }
+    function routeFromLocation() {
+      showPage(location.pathname.replace(/\/+$/, '') === '/about' ? infoPage : homePage, location.pathname);
+    }
+
+    // 404.html sends deep links here as /?route=<path>; restore the real path before routing
+    var redirectedRoute = new URLSearchParams(location.search).get('route');
+    if (redirectedRoute) history.replaceState(null, '', redirectedRoute);
+    if (location.pathname !== '/') routeFromLocation();
+    window.addEventListener('popstate', routeFromLocation);
+
     function revealInView(scope){
       var vh = window.innerHeight;
       scope.querySelectorAll('.reveal, .reveal-word').forEach(function(el){
