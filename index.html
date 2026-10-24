@@ -305,47 +305,22 @@
     }
 
     /* ─── Project Detail Page ─────────────────────────── */
-    #project-page { color: #1d1d1f; }
-    .project-wrap {
-      padding: 64px 0 140px;
-      display: flex;
-      flex-direction: column;
-      gap: 120px;
-    }
-
-    .project-figure--hero {
-      width: 100%;
-    }
-
-    .project-intro {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .project-title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .project-title {
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    .project-subtitle {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.3;
-    }
-
-    .project-split {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-    }
+    .cs-wrap { padding: 96px 0 160px; display: flex; flex-direction: column; gap: 64px; }
+    .cs-head { display: flex; flex-direction: column; gap: 12px; }
+    .cs-title { font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.025em; }
+    .cs-subtitle { font-size: 20px; line-height: 28px; color: var(--fg-2); }
+    .cs-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+    .cs-meta p { font-size: 16px; line-height: 24px; }
+    .cs-meta-label, .cs-label { font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg-3); margin-bottom: 8px; }
+    .cs-section { display: flex; flex-direction: column; gap: 24px; margin-top: 64px; }
+    .cs-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; }
+    .cs-heading { font-size: 28px; line-height: 1.25; font-weight: 500; letter-spacing: -0.015em; max-width: 440px; }
+    .cs-body { display: flex; flex-direction: column; gap: 16px; }
+    .cs-body p { font-size: 17px; line-height: 26px; color: var(--fg-2); }
+    .cs-media { display: flex; flex-direction: column; gap: 8px; }
+    .cs-phones { background: #1f1f1f; border-radius: 8px; padding: 64px 24px; display: flex; justify-content: center; gap: 24px; }
+    .cs-phone { width: 280px; border-radius: 8px; overflow: hidden; aspect-ratio: 294 / 624; }
+    .cs-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
     .project-figure {
       border-radius: 8px;
@@ -365,9 +340,6 @@
       height: 100%;
       object-fit: cover;
     }
-    .project-figure--wide { width: 660px; max-width: 100%; min-width: 0; }
-    .project-figure--full { width: 100%; }
-    .project-figure--half { width: 100%; }
     .project-figure--fade::after {
       content: '';
       position: absolute;
@@ -379,77 +351,15 @@
       pointer-events: none;
     }
 
-    .project-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      width: 202px;
-      flex-shrink: 0;
-    }
-    .project-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .project-meta-label {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.01em;
-      color: var(--fg-3);
-    }
-    .project-meta-value {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: normal;
-    }
-
-    .project-section {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .project-section--concept {
-      margin-top: 80px;
-    }
-    .project-section-title {
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      width: 430px;
-    }
-
-    .project-concept-split {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .project-concept-text {
-      width: 430px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      flex-shrink: 0;
-    }
-    .project-concept-body {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
     .project-figure-block {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
     .project-figure-caption {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: normal;
+      font-size: 15px;
+      line-height: 22px;
+      color: var(--fg-3);
     }
 
     .project-two-col {
@@ -457,27 +367,19 @@
       gap: 24px;
       align-items: flex-start;
     }
-    .project-two-col > * { flex: 1; }
+    .project-two-col > * { flex: 1; min-width: 0; }
 
     .project-mode-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
     }
+    .project-mode-grid .project-figure-caption { margin-bottom: 16px; }
 
     .project-caption-stack {
       display: flex;
       flex-direction: column;
       gap: 24px;
-    }
-
-    .project-media-col {
-      width: 660px;
-      max-width: 100%;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
 
     /* NASA composite hero */
@@ -510,23 +412,16 @@
       width: 60.64%; height: 76.48%;
       object-fit: cover;
     }
-    /* Captioned media column with larger internal gap */
-    .project-media-col--gap40 { gap: 40px; }
-
     @media (max-width: 900px) {
-      .project-split { flex-direction: column; }
-      .project-concept-split { flex-direction: column; }
-      .project-concept-text { width: 100%; }
-      .project-figure--wide { width: 100%; }
+      .cs-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+      .cs-cols { grid-template-columns: 1fr; margin-bottom: 8px; }
+      .cs-title { font-size: 34px; }
     }
 
     @media (max-width: 640px) {
-      .project-wrap { padding: 36px 0 80px; gap: 48px; }
-      .project-split { flex-direction: column; }
-      .project-figure--wide { width: 100%; }
-      .project-concept-split { flex-direction: column; }
-      .project-concept-text { width: 100%; }
-      .project-section-title { width: 100%; }
+      .cs-wrap { padding: 40px 0 96px; gap: 40px; }
+      .cs-section { margin-top: 32px; }
+      .cs-phones { padding: 32px 16px; gap: 12px; }
       .project-two-col { flex-direction: column; }
       .project-mode-grid { grid-template-columns: 1fr; }
     }
@@ -754,89 +649,52 @@
   <!-- Project: River's Sign Up Redesign -->
   <div id="project-signup" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Hero -->
-        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/signup-hero.webp" alt="River sign up redesign hero" /></div>
+        <header class="cs-head">
+          <h1 class="cs-title">River&rsquo;s sign up redesign</h1>
+          <p class="cs-subtitle">Streamlined the onboarding journey to first buy</p>
+        </header>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">River&rsquo;s sign up redesign</div>
-            <div class="project-subtitle">Streamlined the onboarding journey to first buy</div>
-          </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/signup-meta.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">river.com/signup</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">7 months</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">Product design</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Platform</div><div class="project-meta-value">Desktop, mobile web</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2025&ndash;2026</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">Role</div><p>Product design</p><p>2025&ndash;2026</p></div><div><div class="cs-meta-label mono">Duration</div><p>7 months</p></div><div><div class="cs-meta-label mono">Platform</div><p>Desktop</p><p>Mobile web</p></div><div><div class="cs-meta-label mono">For</div><p>river.com/signup</p></div></div>
 
-        <!-- 3. Problem -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Problem</div>
-              <p class="project-concept-body">The previous sign up flow squeezed every question into just three steps. On paper it looked short, but each step carried four or five inputs at once, which made the experience hard to digest. Instead of feeling digestible, it felt heavy, information overload right at the moment clients were deciding whether to trust us, and that showed up as a high drop-off rate before they created their account.<br><br>The copy didn&rsquo;t help either. It read robotic and transactional, which put distance between River and the client. For a product where the whole goal is to feel trustworthy, the onboarding ended up feeling cold and bitter.</p>
-            </div>
-            <div style="display:flex; border-radius:8px; overflow:hidden; width:660px; max-width:100%;">
-              <div style="background:#1f1f1f; padding:23px; display:flex; align-items:center; flex:1;">
-                <div style="border-radius:8px; overflow:hidden; width:100%; aspect-ratio:294/624;">
-                  <img loading="lazy" decoding="async" src="assets/signup-problem-left.webp" alt="Old sign up — create account" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
-                </div>
-              </div>
-              <div style="background:#1f1f1f; padding:23px 23px 23px 0; display:flex; align-items:center; flex:1;">
-                <div style="border-radius:8px; overflow:hidden; width:100%; aspect-ratio:296/624;">
-                  <img loading="lazy" decoding="async" src="assets/signup-problem-right.webp" alt="Old sign up — more about you" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block;" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="project-figure"><img decoding="async" src="assets/signup-hero.webp" alt="River sign up redesign hero" /></div>
 
-        <!-- 4. Design -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Design</div>
-              <p class="project-concept-body">On the design side, I broke the flow into a more natural, conversational experience: asking for the information at the right moment instead of all at once. The journey moved through three phases: creating the account, verifying the login information, and collecting PII. Each step asked for less, so progress felt steady instead of overwhelming.<br><br>I also rebuilt the input experience; inputs now validate well as clients type, addresses are found through search instead of manual entry, and area code and state are handled with dropdowns rather than free text. Small changes, but together they made each step feel faster to clear. The whole interaction should feel snappy, easy to keep moving, so crossing the finish line of onboarding never feels like work.</p>
-            </div>
-            <div style="width:660px; max-width:100%; display:flex; flex-direction:column; gap:8px;">
-              <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-top.webp" alt="Design — account creation flow" /></div>
-              <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-bottom.webp" alt="Design — PII collection flow" /></div>
-            </div>
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;Problem</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Three steps that felt heavier than they looked</h2>
+            <div class="cs-body"><p>The previous sign up flow squeezed every question into just three steps. On paper it looked short, but each step carried four or five inputs at once, which made the experience hard to digest. Instead of feeling digestible, it felt heavy, information overload right at the moment clients were deciding whether to trust us, and that showed up as a high drop-off rate before they created their account.</p><p>The copy didn&rsquo;t help either. It read robotic and transactional, which put distance between River and the client. For a product where the whole goal is to feel trustworthy, the onboarding ended up feeling cold and bitter.</p></div>
           </div>
-        </div>
-
-        <!-- 5. Challenges -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Challenges</div>
-              <p class="project-concept-body">The first was technical. The sign up flow needed a full overhaul: the engineering team put in serious effort to retire the old LiveView stack and rebuild everything in React. That rebuild let us equip the flow with a state machine, so clients can move back to a previous step whenever they need to. At the same time, we were in the middle of a brand redesign, which meant every screen I designed had to keep pace with evolving fonts, styles, and components, and stay consistent as the brand itself was still changing underneath us.<br><br>The second was the sheer number of edge cases. Onboarding is full of them: what happens when a client&rsquo;s identity can&rsquo;t be verified, when they hit an age limit, an SMS limit, or a password rule, when an address doesn&rsquo;t meet requirements. Each path had to be investigated and designed for, so the experience stayed clear and trustworthy no matter where a client landed.</p>
-            </div>
-            <div style="width:660px; max-width:100%; display:flex; flex-direction:column; gap:8px;">
-              <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-top.webp" alt="Challenges — validation and errors" /></div>
-              <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-bottom.webp" alt="Challenges — edge cases" /></div>
-            </div>
+          <div class="cs-phones">
+            <div class="cs-phone"><img loading="lazy" decoding="async" src="assets/signup-problem-left.webp" alt="Old sign up — create account" /></div>
+            <div class="cs-phone"><img loading="lazy" decoding="async" src="assets/signup-problem-right.webp" alt="Old sign up — more about you" /></div>
           </div>
-        </div>
-
-        <!-- 6. Next step -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Next step</div>
-              <p class="project-concept-body">We&rsquo;ve just shipped the mobile web experience, and the native experience is on the way. Working alongside brand and marketing, I&rsquo;ve been shaping the details that make native feel more delightful and snappy: the logged out experience, animations, custom illustrations for identity verification, a notification upsell, and a Face ID upsell etc.<br><br>We&rsquo;re also exploring moving identity verification earlier in the journey. If a client completes IDV up front, they could skip the PII steps entirely and shortcut straight to the home page turning verification from a hurdle into a fast lane.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/signup-nextstep.webp" alt="Next step — native experience" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">02&ensp;Design</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Asking for the right thing at the right moment</h2>
+            <div class="cs-body"><p>On the design side, I broke the flow into a more natural, conversational experience: asking for the information at the right moment instead of all at once. The journey moved through three phases: creating the account, verifying the login information, and collecting PII. Each step asked for less, so progress felt steady instead of overwhelming.</p><p>I also rebuilt the input experience; inputs now validate well as clients type, addresses are found through search instead of manual entry, and area code and state are handled with dropdowns rather than free text. Small changes, but together they made each step feel faster to clear. The whole interaction should feel snappy, easy to keep moving, so crossing the finish line of onboarding never feels like work.</p></div>
           </div>
-        </div>
+          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-top.webp" alt="Design — account creation flow" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-bottom.webp" alt="Design — PII collection flow" /></div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">03&ensp;Challenges</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Rebuilding the stack while the brand changed underneath</h2>
+            <div class="cs-body"><p>The first was technical. The sign up flow needed a full overhaul: the engineering team put in serious effort to retire the old LiveView stack and rebuild everything in React. That rebuild let us equip the flow with a state machine, so clients can move back to a previous step whenever they need to. At the same time, we were in the middle of a brand redesign, which meant every screen I designed had to keep pace with evolving fonts, styles, and components, and stay consistent as the brand itself was still changing underneath us.</p><p>The second was the sheer number of edge cases. Onboarding is full of them: what happens when a client&rsquo;s identity can&rsquo;t be verified, when they hit an age limit, an SMS limit, or a password rule, when an address doesn&rsquo;t meet requirements. Each path had to be investigated and designed for, so the experience stayed clear and trustworthy no matter where a client landed.</p></div>
+          </div>
+          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-top.webp" alt="Challenges — validation and errors" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-bottom.webp" alt="Challenges — edge cases" /></div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">04&ensp;Next step</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Native, and verification as a fast lane</h2>
+            <div class="cs-body"><p>We&rsquo;ve just shipped the mobile web experience, and the native experience is on the way. Working alongside brand and marketing, I&rsquo;ve been shaping the details that make native feel more delightful and snappy: the logged out experience, animations, custom illustrations for identity verification, a notification upsell, and a Face ID upsell etc.</p><p>We&rsquo;re also exploring moving identity verification earlier in the journey. If a client completes IDV up front, they could skip the PII steps entirely and shortcut straight to the home page turning verification from a hurdle into a fast lane.</p></div>
+          </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-nextstep.webp" alt="Next step — native experience" /></div>
+        </section>
 
       </div>
     </div>
@@ -845,82 +703,37 @@
   <!-- Project: Mars Rover - Esque -->
   <div id="project-mars-rover" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Hero -->
-        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-2a6d48edb5e6.webp" alt="Mars Rover Esque hero" /></div>
+        <header class="cs-head">
+          <h1 class="cs-title">Mars Rover &ndash; Esque</h1>
+          <p class="cs-subtitle">An immersive HUD/FUI concept for storytelling</p>
+        </header>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">Mars Rover &ndash; Esque</div>
-            <div class="project-subtitle">An immersive HUD/FUI concept for storytelling</div>
-          </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-51279185255d.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Fun, tool learning</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">2 months</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2019</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>Fun, tool learning</p></div><div><div class="cs-meta-label mono">Duration</div><p>2 months</p></div><div><div class="cs-meta-label mono">Date</div><p>2019</p></div></div>
 
-        <!-- 3. Concept -->
-        <div class="project-section project-section--concept">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Concept</div>
-              <p class="project-concept-body">The concept simulated a HUD/FUI system adapting to different situations while a Mars Rover is inbound to Mars. It starts from the pilot&rsquo;s perspective, enhanced with visual elements in various stages of each interface design.<br><br>Each design serves a specific purpose to surface situational information and data to help the pilot perform through a unified visual language.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="" /></div>
-          </div>
-        </div>
+        <div class="project-figure"><img decoding="async" src="assets/img-2a6d48edb5e6.webp" alt="Mars Rover Esque hero" /></div>
 
-        <!-- 4. Asset development -->
-        <div class="project-section">
-          <div class="project-section-title">Asset development</div>
-          <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c35f66ed34e2.webp" alt="Asset development" /></div>
-        </div>
-
-        <!-- 5. Tier System -->
-        <div class="project-section">
-          <div class="project-section-title">Tier System</div>
-          <div class="project-caption-stack">
-          <div class="project-figure-block">
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c3a9cee398e8.webp" alt="Tier 3" /></div>
-            <div class="project-figure-caption">Tier 3 (full on)</div>
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;Concept</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">A HUD that adapts to every stage of the mission</h2>
+            <div class="cs-body"><p>The concept simulated a HUD/FUI system adapting to different situations while a Mars Rover is inbound to Mars. It starts from the pilot&rsquo;s perspective, enhanced with visual elements in various stages of each interface design.</p><p>Each design serves a specific purpose to surface situational information and data to help the pilot perform through a unified visual language.</p></div>
           </div>
-          <div class="project-mode-grid">
-            <div class="project-figure-block">
-              <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="Tier 2" /></div>
-              <div class="project-figure-caption">Tier 2 (with warming elements)</div>
-            </div>
-            <div class="project-figure-block">
-              <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-902f5eddcf30.webp" alt="Tier 1" /></div>
-              <div class="project-figure-caption">Tier 1 (foundational elements)</div>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <!-- 6. Mode -->
-        <div class="project-section">
-          <div class="project-section-title">Mode</div>
-          <div class="project-mode-grid">
-            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-57686dac7a24.webp" alt="" /></div>
-            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-6c01deb5c545.webp" alt="" /></div>
-            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-fa2597b24934.webp" alt="" /></div>
-            <div class="project-figure project-figure--half"><img loading="lazy" decoding="async" src="assets/img-1b5410e90203.webp" alt="" /></div>
-          </div>
-          <div class="project-caption-stack">
-          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="Loading" /></div><div class="project-figure-caption">Loading</div></div>
-          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-230787899d5f.webp" alt="Cruising" /></div><div class="project-figure-caption">Cruising</div></div>
-          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-51279185255d.webp" alt="Landing" /></div><div class="project-figure-caption">Landing</div></div>
-          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-f94d03c008d0.webp" alt="Inbound" /></div><div class="project-figure-caption">Inbound</div></div>
-          <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ecf18242ad14.webp" alt="Error" /></div><div class="project-figure-caption">Error</div></div>
-          </div>
-        </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">02&ensp;Asset development</div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-c35f66ed34e2.webp" alt="Asset development" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">03&ensp;Tier system</div>
+          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-c3a9cee398e8.webp" alt="Tier 3" /></div><div class="project-figure-caption">Tier 3 (full on)</div></div><div class="project-mode-grid"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="Tier 2" /></div><div class="project-figure-caption">Tier 2 (with warming elements)</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-79cfeb430f34.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-902f5eddcf30.webp" alt="Tier 1" /></div><div class="project-figure-caption">Tier 1 (foundational elements)</div></div></div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">04&ensp;Mode</div>
+          <div class="project-caption-stack"><div class="project-mode-grid"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-57686dac7a24.webp" alt="" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-6c01deb5c545.webp" alt="" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-fa2597b24934.webp" alt="" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-1b5410e90203.webp" alt="" /></div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-77d1c6fb0c87.webp" alt="Loading" /></div><div class="project-figure-caption">Loading</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-230787899d5f.webp" alt="Cruising" /></div><div class="project-figure-caption">Cruising</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-51279185255d.webp" alt="Landing" /></div><div class="project-figure-caption">Landing</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-f94d03c008d0.webp" alt="Inbound" /></div><div class="project-figure-caption">Inbound</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-ecf18242ad14.webp" alt="Error" /></div><div class="project-figure-caption">Error</div></div></div>
+        </section>
 
       </div>
     </div>
@@ -929,39 +742,21 @@
   <!-- Project: Salesforce+ Streaming Experience -->
   <div id="project-salesforce" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Hero -->
-        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-affaf43fe6fb.webp" alt="Salesforce+ streaming hero" /></div>
+        <header class="cs-head">
+          <h1 class="cs-title">Salesforce+ Streaming Experience</h1>
+          <p class="cs-subtitle">Increased scannability and engagement with a card system</p>
+        </header>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">Salesforce+ Streaming Experience</div>
-            <div class="project-subtitle">Increased scannability and engagement with a card system</div>
-          </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-10c4dd7e8eec.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Salesforce+ (Client)<br>With Instrument</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Strategy<br>(Intern)</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2022</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>Salesforce+ (Client)</p><p>With Instrument</p></div><div><div class="cs-meta-label mono">Duration</div><p>3 months</p></div><div><div class="cs-meta-label mono">Responsibility</div><p>UX Strategy</p><p>(Intern)</p></div><div><div class="cs-meta-label mono">Date</div><p>2022</p></div></div>
 
-        <!-- 3. Design -->
-        <div class="project-section">
-          <div class="project-section-title">Design</div>
-          <div class="project-caption-stack">
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ac1c63d37f28.webp" alt="Design 1" /></div>
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-9b85cce29fc6.webp" alt="Design 2" /></div>
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-39b677dbee7d.webp" alt="Design 3" /></div>
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-91a3ac2983a9.webp" alt="Design 4" /></div>
-            <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-fa83fa65e6f8.webp" alt="Design 5" /></div>
-          </div>
-        </div>
+        <div class="project-figure"><img decoding="async" src="assets/img-affaf43fe6fb.webp" alt="Salesforce+ streaming hero" /></div>
+
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;Design</div>
+          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-ac1c63d37f28.webp" alt="Design 1" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-9b85cce29fc6.webp" alt="Design 2" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-39b677dbee7d.webp" alt="Design 3" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-91a3ac2983a9.webp" alt="Design 4" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-fa83fa65e6f8.webp" alt="Design 5" /></div></div>
+        </section>
 
       </div>
     </div>
@@ -970,64 +765,41 @@
   <!-- Project: Peloton Just Work Out Offline Mode -->
   <div id="project-peloton" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Hero -->
-        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-576e5fd186ce.webp" alt="Peloton offline mode hero" /></div>
+        <header class="cs-head">
+          <h1 class="cs-title">Peloton Just Work Out Offline Mode</h1>
+          <p class="cs-subtitle">Enabled workout tracking in offline environments</p>
+        </header>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">Peloton Just Work Out Offline Mode</div>
-            <div class="project-subtitle">Enabled workout tracking in offline environments</div>
-          </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-4211d850f77e.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-ce1974524411.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Peloton app</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">6 weeks</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Design<br>(Intern)</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2023</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>Peloton app</p></div><div><div class="cs-meta-label mono">Duration</div><p>6 weeks</p></div><div><div class="cs-meta-label mono">Responsibility</div><p>UX Design</p><p>(Intern)</p></div><div><div class="cs-meta-label mono">Date</div><p>2023</p></div></div>
 
-        <!-- 3. Problem -->
-        <div class="project-section project-section--concept">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Problem</div>
-              <p class="project-concept-body">Just Work Out is a popular Peloton App feature that allows users to conduct workouts and track their metrics on their device. However, without an internet connection, clients either can&rsquo;t start a workout or risk losing their in-progress workout data.<br><br>Supporting the Just Work Out offline feature has been a strong ask from clients.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-a44797f202bc.webp" alt="Problem" /></div>
-          </div>
-        </div>
+        <div class="project-figure"><img decoding="async" src="assets/img-576e5fd186ce.webp" alt="Peloton offline mode hero" /></div>
 
-        <!-- 4. Investigation -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Investigation</div>
-              <p class="project-concept-body">Ensuring a consistent experience across different edge cases required investigation into potential checkpoints that could affect the flow. I worked closely with engineers to define the efficient way to cover all scenarios with the solution.<br><br>The solution is allowing device to cache data once a client initiates a workout. Once ending the workout, the device determines whether to continue caching or upload the workout details and sync them to the client&rsquo;s account.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-9f6cd7cdae2c.webp" alt="Investigation" /></div>
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;Problem</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">A dropped connection shouldn&rsquo;t cost a workout</h2>
+            <div class="cs-body"><p>Just Work Out is a popular Peloton App feature that allows users to conduct workouts and track their metrics on their device. However, without an internet connection, clients either can&rsquo;t start a workout or risk losing their in-progress workout data.</p><p>Supporting the Just Work Out offline feature has been a strong ask from clients.</p></div>
           </div>
-        </div>
-
-        <!-- 5. Outcome -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Outcome</div>
-              <p class="project-concept-body">I think the design challenge here wasn&rsquo;t aesthetic, it was about mapping every edge case to ensure the experience stayed clear and consistent regardless of connection state.<br><br>The goal was to communicate workout status accurately while staying within the existing design system, keeping the solution lightweight enough to ship quickly.</p>
-            </div>
-            <div class="project-media-col">
-              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-014ff8052916.webp" alt="Outcome 1" /></div>
-              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-52c92601a6e7.webp" alt="Outcome 2" /></div>
-              <div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-3ad5f7d62268.webp" alt="Outcome 3" /></div>
-            </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-a44797f202bc.webp" alt="Problem" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">02&ensp;Investigation</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Mapping every checkpoint with engineering</h2>
+            <div class="cs-body"><p>Ensuring a consistent experience across different edge cases required investigation into potential checkpoints that could affect the flow. I worked closely with engineers to define the efficient way to cover all scenarios with the solution.</p><p>The solution is allowing device to cache data once a client initiates a workout. Once ending the workout, the device determines whether to continue caching or upload the workout details and sync them to the client&rsquo;s account.</p></div>
           </div>
-        </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-9f6cd7cdae2c.webp" alt="Investigation" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">03&ensp;Outcome</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Clear workout status, whatever the connection</h2>
+            <div class="cs-body"><p>I think the design challenge here wasn&rsquo;t aesthetic, it was about mapping every edge case to ensure the experience stayed clear and consistent regardless of connection state.</p><p>The goal was to communicate workout status accurately while staying within the existing design system, keeping the solution lightweight enough to ship quickly.</p></div>
+          </div>
+          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-014ff8052916.webp" alt="Outcome 1" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-52c92601a6e7.webp" alt="Outcome 2" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-3ad5f7d62268.webp" alt="Outcome 3" /></div></div>
+        </section>
 
       </div>
     </div>
@@ -1036,101 +808,58 @@
   <!-- Project: NASA ICE-2 SlideRule -->
   <div id="project-nasa" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Composite Hero -->
+        <header class="cs-head">
+          <h1 class="cs-title">NASA ICE-2 SlideRule</h1>
+          <p class="cs-subtitle">Surfaced scientific evidence through a data processing tool</p>
+        </header>
+
+        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>Nasa Goddard Space Flight Center</p></div><div><div class="cs-meta-label mono">Duration</div><p>3 months</p></div><div><div class="cs-meta-label mono">Responsibility</div><p>UX Lead</p></div><div><div class="cs-meta-label mono">Date</div><p>2023</p></div></div>
+
         <div class="nasa-hero">
-          <img loading="lazy" decoding="async" class="nasa-hero-bg" src="assets/img-80cda55d21fb.webp" alt="" />
+          <img decoding="async" class="nasa-hero-bg" src="assets/img-80cda55d21fb.webp" alt="" />
           <div class="nasa-hero-overlay"></div>
-          <img loading="lazy" decoding="async" class="nasa-hero-mac" src="assets/img-aabd08e4d5e6.webp" alt="" />
-          <img loading="lazy" decoding="async" class="nasa-hero-screen" src="assets/img-fccd99387795.webp" alt="NASA ICE-2 SlideRule tool" />
+          <img decoding="async" class="nasa-hero-mac" src="assets/img-aabd08e4d5e6.webp" alt="" />
+          <img decoding="async" class="nasa-hero-screen" src="assets/img-fccd99387795.webp" alt="NASA ICE-2 SlideRule tool" />
         </div>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">NASA ICE-2 SlideRule</div>
-            <div class="project-subtitle">Surfaced scientific evidence through a data processing tool</div>
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;What ICE-2 does</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Measuring Earth&rsquo;s ice from orbit</h2>
+            <div class="cs-body"><p>It&rsquo;s a NASA satellite that shoots 10,000 laser pulses per second at Earth&rsquo;s surface to precisely measure elevation, mainly tracking how ice sheets, glaciers, and sea ice are changing over time.</p><p>It&rsquo;s how scientists monitor ice loss from space to understand the effects of climate change.</p></div>
           </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-3fd59326ebcd.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">Nasa Goddard Space Flight Center</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">UX Lead</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2023</div></div>
-            </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-d23934184cf6.webp" alt="ICE-2 satellite" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">02&ensp;ICE-2 SlideRule</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Asking satellite data questions without the heavy lifting</h2>
+            <div class="cs-body"><p>A tool that lets users ask NASA&rsquo;s ICESat-2 satellite data questions and get answers back quickly without having to download massive files or do heavy processing yourself. You tell it what area of the Earth you&rsquo;re interested in, and it goes and pulls the relevant data from NASA&rsquo;s archives and sends back just what you need.</p><p>The photo below shows the tool in its original state, before I proposed improvements through the SCADpro program.</p></div>
           </div>
-        </div>
-
-        <!-- 3. What's ICE-2 does? -->
-        <div class="project-section project-section--concept">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">What does ICE-2 do?</div>
-              <p class="project-concept-body">It&rsquo;s a NASA satellite that shoots 10,000 laser pulses per second at Earth&rsquo;s surface to precisely measure elevation, mainly tracking how ice sheets, glaciers, and sea ice are changing over time.<br><br>It&rsquo;s how scientists monitor ice loss from space to understand the effects of climate change.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-d23934184cf6.webp" alt="ICE-2 satellite" /></div>
+          <div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-1b4a20bbca38.webp" alt="Previous version of SlideRule" /></div><div class="project-figure-caption">Previous version of SlideRule</div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">03&ensp;Context</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Opening the data to the public, and speeding up research</h2>
+            <div class="cs-body"><p>This project aims to lower the barrier for the public to access valuable satellite data, while also designing a technical mode that improves the workflow for research purposes, starting from a deep dive into understanding how scientists currently use the tool.</p></div>
           </div>
-        </div>
-
-        <!-- 4. What's ICE-2 SlideRule? -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">What&rsquo;s ICE-2 SlideRule?</div>
-              <p class="project-concept-body">A tool that lets users ask NASA&rsquo;s ICESat-2 satellite data questions and get answers back quickly without having to download massive files or do heavy processing yourself. You tell it what area of the Earth you&rsquo;re interested in, and it goes and pulls the relevant data from NASA&rsquo;s archives and sends back just what you need.<br><br>The photo on the right shows the tool in its original state, before I proposed improvements through the SCADpro program.</p>
-            </div>
-            <div class="project-media-col project-media-col--gap40">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-1b4a20bbca38.webp" alt="Pervious version of SlideRule" /></div><div class="project-figure-caption">Pervious version of SlideRule</div></div>
-            </div>
+          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="Pre-populated results for popular areas to encourage the public to explore the data" /></div><div class="project-figure-caption">Pre-populated results for popular areas to encourage the public to explore the data</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-bb22e17db9b7.webp" alt="Advanced mode" /></div><div class="project-figure-caption">Advanced mode for technical uses</div></div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">04&ensp;Design &ndash; Advanced mode</div>
+          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-37a37f99d5c8.webp" alt="Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates" /></div><div class="project-figure-caption">Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates</div></div><div class="project-two-col"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-ca46f1411e2e.webp" alt="Designed to integrate other data libraries" /></div><div class="project-figure-caption">Designed to integrate other data libraries</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-0a9af55f6208.webp" alt="Panel detailed" /></div><div class="project-figure-caption">Panel detailed</div></div></div><div class="project-two-col"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-23b3fd774a7a.webp" alt="Result levels (before)" /></div><div class="project-figure-caption">Result levels (before)</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="Result levels (after)" /></div><div class="project-figure-caption">Result levels (after)</div></div></div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">05&ensp;Feels like a dream</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Working alongside NASA&rsquo;s ICESat-2 team</h2>
+            <div class="cs-body"><p>OK, It&rsquo;s such a precious opportunity to be solving a real problem with NASA. From first proposing the idea, to speaking with the ICESat-2 team, to visiting Goddard Space Flight Center to present the design and work alongside their engineers to develop the project, everything feels surreal and I&rsquo;m incredibly excited to be part of this.</p><p>Excited to see our design results to be part of <a class="info-link" href="https://icesat-2.gsfc.nasa.gov/sites/default/files/users/user134/SlideRule%20-%20Bathymetry%20Workshop%20-%20March%202025.pdf" target="_blank" rel="noopener">NASA ICESat-2 mission documentation</a>!</p></div>
           </div>
-        </div>
-
-        <!-- 5. Context -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Context</div>
-              <p class="project-concept-body">This project aims to lower the barrier for the public to access valuable satellite data, while also designing a technical mode that improves the workflow for research purposes, starting from a deep dive into understanding how scientists currently use the tool.</p>
-            </div>
-            <div class="project-media-col project-media-col--gap40">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="Pre-populated results for popular areas to encourage the public to explore the data" /></div><div class="project-figure-caption">Pre-populated results for popular areas to encourage the public to explore the data</div></div>
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-99887c6c5357.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-bb22e17db9b7.webp" alt="Advanced mode" /></div><div class="project-figure-caption">Advanced mode for technical uses</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Design - Advanced mode -->
-        <div class="project-section">
-          <div class="project-section-title">Design - Advanced mode</div>
-          <div class="project-caption-stack">
-            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-37a37f99d5c8.webp" alt="Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates" /></div><div class="project-figure-caption">Allow multiple requests to be submitted simultaneously, each has its parameter settings, status label, and coordinates</div></div>
-            <div class="project-two-col">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-ca46f1411e2e.webp" alt="Designed to integrate other data libraries" /></div><div class="project-figure-caption">Designed to integrate other data libraries</div></div>
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="" /><img loading="lazy" decoding="async" src="assets/img-0a9af55f6208.webp" alt="Panel detailed" /></div><div class="project-figure-caption">Panel detailed</div></div>
-            </div>
-            <div class="project-two-col">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-23b3fd774a7a.webp" alt="Result levels (before)" /></div><div class="project-figure-caption">Result levels (before)</div></div>
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7d1530bf9f28.webp" alt="Result levels (after)" /></div><div class="project-figure-caption">Result levels (after)</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7. Feels like a dream -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Feels like a dream</div>
-              <p class="project-concept-body">OK, It&rsquo;s such a precious opportunity to be solving a real problem with NASA. From first proposing the idea, to speaking with the ICESat-2 team, to visiting Goddard Space Flight Center to present the design and work alongside their engineers to develop the project, everything feels surreal and I&rsquo;m incredibly excited to be part of this.<br><br>Excited to see our design results to be part of <a class="info-link" href="https://icesat-2.gsfc.nasa.gov/sites/default/files/users/user134/SlideRule%20-%20Bathymetry%20Workshop%20-%20March%202025.pdf" target="_blank" rel="noopener">NASA ICESat-2 mission documentation</a>!</p>
-            </div>
-            <div class="project-media-col project-media-col--gap40">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-3e6dbf5fe6ad.webp" alt="Research" /></div><div class="project-figure-caption">Research</div></div>
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-8ff6fe368fe3.webp" alt="Visiting Maryland - Goddard Space Flight Center" /></div><div class="project-figure-caption">Visiting Maryland - Goddard Space Flight Center</div></div>
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-8f4461925415.webp" alt="Web page" /></div><div class="project-figure-caption">Web page</div></div>
-            </div>
-          </div>
-        </div>
+          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-3e6dbf5fe6ad.webp" alt="Research" /></div><div class="project-figure-caption">Research</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-8ff6fe368fe3.webp" alt="Visiting Maryland - Goddard Space Flight Center" /></div><div class="project-figure-caption">Visiting Maryland - Goddard Space Flight Center</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-8f4461925415.webp" alt="Web page" /></div><div class="project-figure-caption">Web page</div></div></div>
+        </section>
 
       </div>
     </div>
@@ -1139,84 +868,53 @@
   <!-- Project: River's Marketing website -->
   <div id="project-river-web" class="page">
     <div class="container">
-      <div class="project-wrap">
+      <div class="cs-wrap">
 
-        <!-- 1. Hero -->
-        <div class="project-figure project-figure--hero"><img loading="lazy" decoding="async" src="assets/img-e30736465fef.webp" alt="River marketing website hero" /></div>
+        <header class="cs-head">
+          <h1 class="cs-title">River&rsquo;s Marketing website</h1>
+          <p class="cs-subtitle">Shaped the brand and business representation</p>
+        </header>
 
-        <!-- 2. Title + image/meta -->
-        <div class="project-section" style="gap:16px">
-          <div class="project-title-block">
-            <div class="project-title">River&rsquo;s Marketing website</div>
-            <div class="project-subtitle">Shaped the brand and business representation</div>
-          </div>
-          <div class="project-split">
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-ffd7011e0996.webp" alt="" /></div>
-            <div class="project-meta">
-              <div class="project-meta-item"><div class="project-meta-label">For</div><div class="project-meta-value">river.com</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Duration</div><div class="project-meta-value">3 months</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Responsibility</div><div class="project-meta-value">Product design<br>Development</div></div>
-              <div class="project-meta-item"><div class="project-meta-label">Date</div><div class="project-meta-value">2026</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>river.com</p></div><div><div class="cs-meta-label mono">Duration</div><p>3 months</p></div><div><div class="cs-meta-label mono">Responsibility</div><p>Product design</p><p>Development</p></div><div><div class="cs-meta-label mono">Date</div><p>2026</p></div></div>
 
-        <!-- 3. Overview -->
-        <div class="project-section project-section--concept">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Overview</div>
-              <p class="project-concept-body">A full River.com revamp across 20 pages to modernize the brand within the rebrand work, resolve visual inconsistency, improve accessibility and SEO, and build a scalable front end system from the ground up, reducing development time while keeping layout consistency across the website.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-dc66851fbe23.webp" alt="Overview" /></div>
-          </div>
-        </div>
+        <div class="project-figure"><img decoding="async" src="assets/img-e30736465fef.webp" alt="River marketing website hero" /></div>
 
-        <!-- 4. The Problem -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">The Problem</div>
-              <p class="project-concept-body">The previous River.com had mismatched components and an outdated visual language made the site hard to maintain and harder to make a strong first impression on prospective clients.<br><br>The content was identically repetitive across each page, causing information overload and making it difficult to convey the brand and value prop throughout the website.</p>
-            </div>
-            <div class="project-figure project-figure--wide"><img loading="lazy" decoding="async" src="assets/img-68116068404b.webp" alt="The Problem" /></div>
+        <section class="cs-section">
+          <div class="cs-label mono">01&ensp;Overview</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">A full revamp across 20 pages</h2>
+            <div class="cs-body"><p>A full River.com revamp across 20 pages to modernize the brand within the rebrand work, resolve visual inconsistency, improve accessibility and SEO, and build a scalable front end system from the ground up, reducing development time while keeping layout consistency across the website.</p></div>
           </div>
-        </div>
-
-        <!-- 5. Design -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Design</div>
-              <p class="project-concept-body">After aligning with our lead brand designer, we defined a card and section system that could be adopted across each page while delivering the new IA. I also worked closely with the marketing team to refine the content strategy,<br><br>One thing worth calling out, I recommended adopting a full-width section on the homepage for flexible campaign rotation, and assisted with the visual asset production alongside the lead brand designer.</p>
-            </div>
-            <div class="project-media-col project-media-col--gap40">
-              <div class="project-figure-block"><div class="project-figure project-figure--full project-figure--fade"><img loading="lazy" decoding="async" src="assets/img-a9f6473b2937.webp" alt="Home page" /></div><div class="project-figure-caption">Home page</div></div>
-            </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-dc66851fbe23.webp" alt="Overview" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">02&ensp;Problem</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Mismatched parts and repeated content</h2>
+            <div class="cs-body"><p>The previous River.com had mismatched components and an outdated visual language made the site hard to maintain and harder to make a strong first impression on prospective clients.</p><p>The content was identically repetitive across each page, causing information overload and making it difficult to convey the brand and value prop throughout the website.</p></div>
           </div>
-        </div>
-
-        <!-- 6. Building It -->
-        <div class="project-section">
-          <div class="project-concept-split">
-            <div class="project-concept-text">
-              <div class="project-section-title">Building It</div>
-              <p class="project-concept-body">We eventually narrowed down to 14 pages to build. I worked with another design technologist to execute the development.<br><br>We focused on building out the section components and card system as the foundation, while the utilizing the new rebrand tokens, and have all the pages behind a feature flag.<br><br>The foundational piece took us 3 - 4 days to get right, with support from a senior engineer to review the code. Once the system was in place, it enabled the two of us to build pages like Lego, we finishing a page in 2 &ndash; 5 hours depending on the number of sections.</p>
-            </div>
-            <div class="project-media-col project-media-col--gap40">
-              <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-c8bb9149a26b.webp" alt="File ready for dev" /></div><div class="project-figure-caption">File ready for dev</div></div>
-            </div>
+          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-68116068404b.webp" alt="The Problem" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">03&ensp;Design</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">One card and section system for every page</h2>
+            <div class="cs-body"><p>After aligning with our lead brand designer, we defined a card and section system that could be adopted across each page while delivering the new IA. I also worked closely with the marketing team to refine the content strategy,</p><p>One thing worth calling out, I recommended adopting a full-width section on the homepage for flexible campaign rotation, and assisted with the visual asset production alongside the lead brand designer.</p></div>
           </div>
-        </div>
-
-        <!-- 7. Outcome -->
-        <div class="project-section">
-          <div class="project-section-title">Outcome</div>
-          <div class="project-two-col">
-            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-04b2804173d0.webp" alt="Bitcoin price page" /></div><div class="project-figure-caption">Bitcoin price page</div></div>
-            <div class="project-figure-block"><div class="project-figure project-figure--full"><img loading="lazy" decoding="async" src="assets/img-7b70830b9ee1.webp" alt="Interest page" /></div><div class="project-figure-caption">Interest page</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--fade"><img loading="lazy" decoding="async" src="assets/img-a9f6473b2937.webp" alt="Home page" /></div><div class="project-figure-caption">Home page</div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">04&ensp;Building it</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">Building pages like Lego</h2>
+            <div class="cs-body"><p>We eventually narrowed down to 14 pages to build. I worked with another design technologist to execute the development.</p><p>We focused on building out the section components and card system as the foundation, while the utilizing the new rebrand tokens, and have all the pages behind a feature flag.</p><p>The foundational piece took us 3 - 4 days to get right, with support from a senior engineer to review the code. Once the system was in place, it enabled the two of us to build pages like Lego, we finishing a page in 2 &ndash; 5 hours depending on the number of sections.</p></div>
           </div>
-        </div>
+          <div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-c8bb9149a26b.webp" alt="File ready for dev" /></div><div class="project-figure-caption">File ready for dev</div></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-label mono">05&ensp;Outcome</div>
+          <div class="project-two-col"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-04b2804173d0.webp" alt="Bitcoin price page" /></div><div class="project-figure-caption">Bitcoin price page</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-7b70830b9ee1.webp" alt="Interest page" /></div><div class="project-figure-caption">Interest page</div></div></div>
+        </section>
 
       </div>
     </div>
@@ -1293,25 +991,25 @@
     }
 
     // ─── Scroll reveal (Apple-style fade-up + stagger) ──
-    // Tag hero + each section's content blocks; stagger siblings within a section.
-    document.querySelectorAll('.project-wrap').forEach(function(wrap){
+    // Tag meta, hero and each section's blocks; stagger siblings within a section.
+    document.querySelectorAll('.cs-wrap').forEach(function(wrap){
       Array.from(wrap.children).forEach(function(child){
-        if (child.classList.contains('project-section')) {
+        if (child.classList.contains('cs-head')) return;
+        if (child.classList.contains('cs-section')) {
           var units = [];
           Array.from(child.children).forEach(function(sub){
-            if (sub.classList.contains('project-concept-split')) {
-              Array.from(sub.children).forEach(function(u){ units.push(u); });
-            } else if (!sub.classList.contains('project-title-block')) {
-              units.push(sub);
-            }
+            if (sub.classList.contains('cs-cols')) units.push.apply(units, sub.children);
+            else units.push(sub);
           });
           units.forEach(function(u, i){
             u.classList.add('reveal');
             u.style.setProperty('--reveal-delay', (i * 0.09) + 's');
           });
+        } else if (child.classList.contains('cs-meta')) {
+          child.classList.add('reveal');
+          child.style.setProperty('--reveal-delay', '0.2s');
         } else {
-          child.classList.add('reveal');      // hero
-          child.classList.add('reveal-hero');
+          child.classList.add('reveal', 'reveal-hero');
         }
       });
     });
@@ -1369,10 +1067,10 @@
       });
       el.classList.add('word-reveal', 'reveal-word');
     }
-    document.querySelectorAll('.project-title').forEach(splitWords);
+    document.querySelectorAll('.cs-title').forEach(splitWords);
     document.querySelectorAll('.reveal-word').forEach(function(el){ revealIO.observe(el); });
     // also ensure subtitle fades in
-    document.querySelectorAll('.project-subtitle').forEach(function(el){ el.classList.add('reveal'); el.style.setProperty('--reveal-delay','0.15s'); revealIO.observe(el); });
+    document.querySelectorAll('.cs-subtitle').forEach(function(el){ el.classList.add('reveal'); el.style.setProperty('--reveal-delay','0.15s'); revealIO.observe(el); });
 
   </script>
 
