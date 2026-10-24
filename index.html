@@ -991,9 +991,18 @@
     function showInfo() { showPage(infoPage, '/about'); }
     function toggleInfo() { infoPage.classList.contains('active') ? showHome() : showInfo(); }
 
+    var projectPaths = {
+      'signup': '/river-financial',
+      'river-web': '/river',
+      'nasa': '/nasa-sliderule',
+      'salesforce': '/salesforce-plus',
+      'mars-rover': '/mars-rover',
+      'peloton': '/peloton'
+    };
+
     function showProject(id) {
       var page = document.getElementById('project-' + id);
-      if (page) showPage(page);
+      if (page) showPage(page, projectPaths[id]);
     }
 
     // ─── Scroll reveal (Apple-style fade-up + stagger) ──
@@ -1029,7 +1038,10 @@
       scope.querySelectorAll('.reveal, .reveal-word').forEach(function(el){ el.classList.remove('is-visible'); });
     }
     function routeFromLocation() {
-      showPage(location.pathname.replace(/\/+$/, '') === '/about' ? infoPage : homePage, location.pathname);
+      var path = location.pathname.replace(/\/+$/, '');
+      var id = Object.keys(projectPaths).find(function(k){ return projectPaths[k] === path; });
+      var page = id ? document.getElementById('project-' + id) : path === '/about' ? infoPage : homePage;
+      showPage(page, location.pathname);
     }
 
     // about.html and 404.html send deep links here as /?route=<path>; restore the real path before routing
