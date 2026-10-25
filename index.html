@@ -374,6 +374,18 @@
     }
     .project-two-col > * { flex: 1; min-width: 0; }
 
+    .project-figure--fade { position: relative; }
+    .project-figure--fade::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 22%;
+      background: linear-gradient(to bottom, rgba(218,218,218,0), #dadada 85%);
+      pointer-events: none;
+    }
+
     .ba {
       --pos: 50%;
       position: relative;
@@ -888,7 +900,7 @@
             <h2 class="cs-heading">Asking satellite data questions without the heavy lifting</h2>
             <div class="cs-body"><p>SlideRule lets anyone request ICESat-2 data without downloading massive files or processing them by hand. Pick an area of the Earth, and it pulls the relevant data from NASA&rsquo;s archives and returns just what you need.</p><p>Below is the tool as it was before our redesign.</p></div>
           </div>
-          <div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-e89a0b8b650f.webp" alt="Previous version of SlideRule" /></div><div class="project-figure-caption">Previous version of SlideRule</div></div>
+          <div class="project-figure-block"><div class="project-figure project-figure--fade"><img loading="lazy" decoding="async" src="assets/img-e89a0b8b650f.webp" alt="Previous version of SlideRule" /></div><div class="project-figure-caption">Previous version of SlideRule</div></div>
         </section>
         <section class="cs-section">
           <div class="cs-label mono">Context</div>
@@ -904,7 +916,7 @@
             <h2 class="cs-heading">Built for how researchers actually work</h2>
             <div class="cs-body"><p>Researchers often run many requests and compare the results side by side. Advanced mode lets them queue requests, track each one&rsquo;s status and review the results in one place.</p></div>
           </div>
-          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-a659c9dc02d6.webp" alt="Run several requests at once, each with its own parameters, status and coordinates" /></div><div class="project-figure-caption">Run several requests at once, each with its own parameters, status and coordinates</div></div><div class="project-two-col"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-8466173d9c8d.webp" alt="Designed to integrate other data libraries" /></div><div class="project-figure-caption">Designed to integrate other data libraries</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-ce196f43d299.webp" alt="Every parameter in one panel" /></div><div class="project-figure-caption">Every parameter in one panel</div></div></div><div class="project-figure-block"><div class="ba"><img loading="lazy" decoding="async" src="assets/img-e51ff8c326ef.webp" alt="Result levels after the redesign: an interactive plot beside the request details" /><img class="ba-before" loading="lazy" decoding="async" src="assets/img-ac3d5c38280d.webp" alt="Result levels before the redesign: a static photon cloud chart" /><span class="ba-tag ba-tag--before mono">BEFORE</span><span class="ba-tag ba-tag--after mono">AFTER</span><div class="ba-line"></div><div class="ba-handle" role="slider" tabindex="0" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h20M5 2 1 6l4 4M17 2l4 4-4 4"/></svg></div></div><div class="project-figure-caption">Result levels, from a static chart to an interactive plot. Drag to compare.</div></div></div>
+          <div class="project-caption-stack"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-a659c9dc02d6.webp" alt="Run several requests at once, each with its own parameters, status and coordinates" /></div><div class="project-figure-caption">Run several requests at once, each with its own parameters, status and coordinates</div></div><div class="project-two-col"><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-8466173d9c8d.webp" alt="Designed to integrate other data libraries" /></div><div class="project-figure-caption">Designed to integrate other data libraries</div></div><div class="project-figure-block"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-ce196f43d299.webp" alt="Every parameter in one panel" /></div><div class="project-figure-caption">Every parameter in one panel</div></div></div><div class="project-figure-block"><div class="ba"><img loading="lazy" decoding="async" src="assets/img-e51ff8c326ef.webp" alt="Result levels after the redesign: an interactive plot beside the request details" /><img class="ba-before" loading="lazy" decoding="async" src="assets/img-ac3d5c38280d.webp" alt="Result levels before the redesign: a static photon cloud chart" /><span class="ba-tag ba-tag--before mono">BEFORE</span><span class="ba-tag ba-tag--after mono">AFTER</span><div class="ba-line"></div><div class="ba-handle" role="slider" tabindex="0" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h20M5 2 1 6l4 4M17 2l4 4-4 4"/></svg></div></div><div class="project-figure-caption">Result levels, from a static chart to an interactive plot &mdash; Drag to compare.</div></div></div>
         </section>
         <section class="cs-section">
           <div class="cs-label mono">Outcome</div>
