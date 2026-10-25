@@ -721,18 +721,25 @@
 
         <header class="cs-head">
           <h1 class="cs-title">River onboarding</h1>
-          <p class="cs-subtitle">Bringing delight to a regulated sign up</p>
+          <p class="cs-subtitle">Redesigning River&rsquo;s sign up for individual and business accounts</p>
         </header>
 
-        <div class="cs-meta"><div><div class="cs-meta-label mono">Role</div><p>Lead Designer</p><p>2025&ndash;2026</p></div><div><div class="cs-meta-label mono">Scope</div><p>Product</p><p>Brand</p><p>Design Systems</p></div><div><div class="cs-meta-label mono">Platform</div><p>Mobile native / web</p><p>Mobile Android</p><p>Desktop</p></div><div><div class="cs-meta-label mono">Industry</div><p>Fintech</p></div></div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">Role</div><p>Lead Designer</p><p>2025&ndash;2026</p></div><div><div class="cs-meta-label mono">Scope</div><p>Product</p><p>Brand</p><p>Design Systems</p></div><div><div class="cs-meta-label mono">Platform</div><p>iOS</p><p>Android</p><p>Mobile web</p><p>Desktop</p></div><div><div class="cs-meta-label mono">Industry</div><p>Fintech</p></div></div>
 
         <div class="project-figure"><img decoding="async" src="assets/signup-hero.webp" alt="River onboarding hero" /></div>
 
         <section class="cs-section">
+          <div class="cs-label mono">Overview</div>
+          <div class="cs-cols">
+            <h2 class="cs-heading">A sign up that earns trust one step at a time</h2>
+            <div class="cs-body"><p>River is a bitcoin financial institution, and every new client has to pass identity and regulatory checks before they can use their account. Sign up is the first real conversation River has with them.</p><p>As lead designer, I redesigned onboarding end to end, working with engineering through a full React rebuild and with brand and marketing while the new identity took shape.</p></div>
+          </div>
+        </section>
+        <section class="cs-section">
           <div class="cs-label mono">Problem</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Three steps that felt heavier than they looked</h2>
-            <div class="cs-body"><p>The previous sign up flow squeezed every question into just three steps. On paper it looked short, but each step carried four or five inputs at once, which made the experience hard to digest. Instead of feeling digestible, it felt heavy, information overload right at the moment clients were deciding whether to trust us, and that showed up as a high drop-off rate before they created their account.</p><p>The copy didn&rsquo;t help either. It read robotic and transactional, which put distance between River and the client. For a product where the whole goal is to feel trustworthy, the onboarding ended up feeling cold and bitter.</p></div>
+            <div class="cs-body"><p>The old sign up squeezed every question into three steps. It looked short on paper, but each step asked for four or five inputs at once. That overload landed right when clients were deciding whether to trust us, and many dropped off before creating an account.</p><p>The copy didn&rsquo;t help. It read robotic and transactional, which put distance between River and the client. For a product that has to feel trustworthy, onboarding felt cold.</p></div>
           </div>
           <div class="cs-phones">
             <div class="cs-phone"><img loading="lazy" decoding="async" src="assets/signup-problem-left.webp" alt="Old sign up — create account" /></div>
@@ -743,7 +750,7 @@
           <div class="cs-label mono">Design</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Asking for the right thing at the right moment</h2>
-            <div class="cs-body"><p>On the design side, I broke the flow into a more natural, conversational experience: asking for the information at the right moment instead of all at once. The journey moved through three phases: creating the account, verifying the login information, and collecting PII. Each step asked for less, so progress felt steady instead of overwhelming.</p><p>I also rebuilt the input experience; inputs now validate well as clients type, addresses are found through search instead of manual entry, and area code and state are handled with dropdowns rather than free text. Small changes, but together they made each step feel faster to clear. The whole interaction should feel snappy, easy to keep moving, so crossing the finish line of onboarding never feels like work.</p></div>
+            <div class="cs-body"><p>I broke the flow into a conversational sequence that asks for each piece of information when it makes sense, not all at once. The journey moves through three phases: creating the account, verifying login details, and collecting personal information. Each step asks for less, so progress feels steady instead of overwhelming.</p><p>I also rebuilt the inputs. Fields validate as clients type, addresses come from search instead of manual entry, and area code and state use dropdowns instead of free text. Small changes, but together they make each step faster to clear, so reaching the end of onboarding never feels like work.</p></div>
           </div>
           <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-top.webp" alt="Design — account creation flow" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-design-bottom.webp" alt="Design — PII collection flow" /></div></div>
         </section>
@@ -751,7 +758,7 @@
           <div class="cs-label mono">Challenges</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Rebuilding the stack while the brand changed underneath</h2>
-            <div class="cs-body"><p>The first was technical. The sign up flow needed a full overhaul: the engineering team put in serious effort to retire the old LiveView stack and rebuild everything in React. That rebuild let us equip the flow with a state machine, so clients can move back to a previous step whenever they need to. At the same time, we were in the middle of a brand redesign, which meant every screen I designed had to keep pace with evolving fonts, styles, and components, and stay consistent as the brand itself was still changing underneath us.</p><p>The second was the sheer number of edge cases. Onboarding is full of them: what happens when a client&rsquo;s identity can&rsquo;t be verified, when they hit an age limit, an SMS limit, or a password rule, when an address doesn&rsquo;t meet requirements. Each path had to be investigated and designed for, so the experience stayed clear and trustworthy no matter where a client landed.</p></div>
+            <div class="cs-body"><p>Two things made this hard. Engineering rebuilt sign up from the ground up while River was mid-rebrand, so every screen had to keep pace with a brand still taking shape. And onboarding is full of edge cases, from identities that can&rsquo;t be verified to addresses that don&rsquo;t qualify. I designed each path so the experience stayed clear and trustworthy wherever a client landed.</p></div>
           </div>
           <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-top.webp" alt="Challenges — validation and errors" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-challenges-bottom.webp" alt="Challenges — edge cases" /></div></div>
         </section>
@@ -759,9 +766,15 @@
           <div class="cs-label mono">Next step</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Native, and verification as a fast lane</h2>
-            <div class="cs-body"><p>We&rsquo;ve just shipped the mobile web experience, and the native experience is on the way. Working alongside brand and marketing, I&rsquo;ve been shaping the details that make native feel more delightful and snappy: the logged out experience, animations, custom illustrations for identity verification, a notification upsell, and a Face ID upsell etc.</p><p>We&rsquo;re also exploring moving identity verification earlier in the journey. If a client completes IDV up front, they could skip the PII steps entirely and shortcut straight to the home page turning verification from a hurdle into a fast lane.</p></div>
+            <div class="cs-body"><p>I&rsquo;m shaping what makes native feel delightful and snappy: the logged-out experience, animations, custom illustrations for identity verification, and upsells for notifications and Face ID.</p><p>We&rsquo;re also exploring moving identity verification earlier. If a client verifies up front, they could skip the personal information steps and go straight to the home page, turning verification from a hurdle into a fast lane.</p></div>
           </div>
           <div class="project-figure"><img loading="lazy" decoding="async" src="assets/signup-nextstep.webp" alt="Next step — native experience" /></div>
+        </section>
+        <section class="cs-section">
+          <div class="cs-cols">
+            <h2 class="cs-heading">Learnings &amp; Reflection</h2>
+            <div class="cs-body"><p>The redesigned sign up is now live for individual and business clients.</p><p>The biggest lesson for me: shorter isn&rsquo;t the same as lighter. The old flow had only three steps and still felt heavy. Asking for less at each moment, in a voice that sounds like River, is what made sign up feel easy.</p></div>
+          </div>
         </section>
 
       </div>
