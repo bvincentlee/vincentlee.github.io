@@ -338,6 +338,7 @@
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 8px;
     }
     /* Stacked/overlay images (e.g. Tier 1) sit on top of the first one */
     .project-figure img ~ img {
@@ -383,6 +384,7 @@
       right: 0;
       bottom: 0;
       height: 18%;
+      border-radius: 0 0 8px 8px;
       background: linear-gradient(to bottom, rgba(218,218,218,0) 0%, rgba(218,218,218,0.013) 8.1%, rgba(218,218,218,0.049) 15.5%, rgba(218,218,218,0.104) 22.5%, rgba(218,218,218,0.175) 29%, rgba(218,218,218,0.259) 35.3%, rgba(218,218,218,0.352) 41.2%, rgba(218,218,218,0.45) 47.1%, rgba(218,218,218,0.55) 52.9%, rgba(218,218,218,0.648) 58.8%, rgba(218,218,218,0.741) 64.7%, rgba(218,218,218,0.825) 71%, rgba(218,218,218,0.896) 77.5%, rgba(218,218,218,0.951) 84.5%, rgba(218,218,218,0.987) 91.9%, #dadada 100%);
       pointer-events: none;
     }
@@ -400,6 +402,7 @@
       user-select: none;
     }
     .ba img {
+      border-radius: 8px;
       position: absolute;
       inset: 0;
       width: 100%;
@@ -495,6 +498,7 @@
     .reveal.is-visible {
       opacity: 1;
       transform: none;
+      will-change: auto;
     }
 
 
@@ -586,12 +590,12 @@
       <main class="works">
         <div class="cards-grid cards-grid--featured">
           <div class="card enter" style="--i:2" onclick="showProject('signup')">
-            <div class="card-img" style="background-image:url('assets/img-7f1ac66c9ee9.webp')"></div>
+            <div class="card-img" style="background-image:url('assets/img-7bed4c305162.webp')"></div>
             <div class="card-title">River Financial</div>
             <div class="card-desc">Product &middot; 2025&ndash;2026</div>
           </div>
           <div class="card enter" style="--i:3" onclick="showProject('river-web')">
-            <div class="card-img" style="background-image:url('assets/img-1ab82f8797ea.webp')"></div>
+            <div class="card-img" style="background-image:url('assets/img-64508e58e29c.webp')"></div>
             <div class="card-title">River.com</div>
             <div class="card-desc">Brand &middot; 2025</div>
           </div>
