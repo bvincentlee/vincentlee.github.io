@@ -775,10 +775,10 @@
 
         <header class="cs-head">
           <h1 class="cs-title">Peloton Just Work Out Offline Mode</h1>
-          <p class="cs-subtitle">Enabled workout tracking in offline environments</p>
+          <p class="cs-subtitle">Workout tracking that works offline</p>
         </header>
 
-        <div class="cs-meta"><div><div class="cs-meta-label mono">For</div><p>Peloton app</p></div><div><div class="cs-meta-label mono">Duration</div><p>6 weeks</p></div><div><div class="cs-meta-label mono">Responsibility</div><p>UX Design</p><p>(Intern)</p></div><div><div class="cs-meta-label mono">Date</div><p>2023</p></div></div>
+        <div class="cs-meta"><div><div class="cs-meta-label mono">Role</div><p>UX Designer</p></div><div><div class="cs-meta-label mono">Scope</div><p>Product</p><p>Feature</p></div><div><div class="cs-meta-label mono">Industry</div><p>Fitness</p></div></div>
 
         <div class="project-figure"><img decoding="async" src="assets/img-576e5fd186ce.webp" alt="Peloton offline mode hero" /></div>
 
@@ -786,15 +786,14 @@
           <div class="cs-label mono">Problem</div>
           <div class="cs-cols">
             <h2 class="cs-heading">A dropped connection shouldn&rsquo;t cost a workout</h2>
-            <div class="cs-body"><p>Just Work Out is a popular Peloton App feature that allows users to conduct workouts and track their metrics on their device. However, without an internet connection, clients either can&rsquo;t start a workout or risk losing their in-progress workout data.</p><p>Supporting the Just Work Out offline feature has been a strong ask from clients.</p></div>
+            <div class="cs-body"><p>Just Work Out lets Peloton members start a workout and track their metrics without picking a class. But without an internet connection, they couldn&rsquo;t start a workout at all, or risked losing one already in progress. Offline support was one of the most requested features.</p></div>
           </div>
-          <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-a44797f202bc.webp" alt="Problem" /></div>
         </section>
         <section class="cs-section">
           <div class="cs-label mono">Investigation</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Mapping every checkpoint with engineering</h2>
-            <div class="cs-body"><p>Ensuring a consistent experience across different edge cases required investigation into potential checkpoints that could affect the flow. I worked closely with engineers to define the efficient way to cover all scenarios with the solution.</p><p>The solution is allowing device to cache data once a client initiates a workout. Once ending the workout, the device determines whether to continue caching or upload the workout details and sync them to the client&rsquo;s account.</p></div>
+            <div class="cs-body"><p>Keeping the experience consistent across edge cases meant finding every checkpoint that could affect the flow. I worked closely with engineers to find the simplest way to cover every scenario.</p><p>The device caches workout data as soon as a workout starts. When the workout ends, it checks for a connection. If there is one, it uploads the workout and syncs it to the member&rsquo;s account. If not, it keeps the data cached until it can.</p></div>
           </div>
           <div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-9f6cd7cdae2c.webp" alt="Investigation" /></div>
         </section>
@@ -802,9 +801,9 @@
           <div class="cs-label mono">Outcome</div>
           <div class="cs-cols">
             <h2 class="cs-heading">Clear workout status, whatever the connection</h2>
-            <div class="cs-body"><p>I think the design challenge here wasn&rsquo;t aesthetic, it was about mapping every edge case to ensure the experience stayed clear and consistent regardless of connection state.</p><p>The goal was to communicate workout status accurately while staying within the existing design system, keeping the solution lightweight enough to ship quickly.</p></div>
+            <div class="cs-body"><p>The challenge wasn&rsquo;t visual. It was mapping every edge case and working with engineers to find a solution that kept the experience clear and consistent in any connection state.</p><p>The goal was to communicate workout status accurately while staying within the existing design system, keeping the solution lightweight enough to ship quickly.</p></div>
           </div>
-          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-014ff8052916.webp" alt="Outcome 1" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-52c92601a6e7.webp" alt="Outcome 2" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-3ad5f7d62268.webp" alt="Outcome 3" /></div></div>
+          <div class="cs-media"><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-014ff8052916.webp" alt="Outcome 1" /></div><div class="project-figure"><img loading="lazy" decoding="async" src="assets/img-52c92601a6e7.webp" alt="Outcome 2" /></div></div>
         </section>
 
       </div>
