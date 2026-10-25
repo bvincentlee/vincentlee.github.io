@@ -286,6 +286,8 @@
 
     .info-link:hover { text-decoration-color: var(--fg-1); }
 
+    .info-contact { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
     @media (max-width: 900px) {
       :root { --gutter: 40px; }
       .info-wrap { grid-template-columns: 1fr; row-gap: 56px; }
@@ -699,6 +701,11 @@
             <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/adg-logo.webp" alt="ADG Group NQ"></div>
             <div class="logo-cell"><img loading="lazy" decoding="async" src="assets/als-logo.webp" alt="ALS Environmental"></div>
           </div>
+        </div>
+
+        <div class="info-contact">
+          <div class="info-label">Contact</div>
+          <a class="info-link" href="mailto:bvincentlee@gmail.com">bvincentlee@gmail.com</a>
         </div>
 
       </div>
