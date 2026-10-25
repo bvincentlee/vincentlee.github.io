@@ -934,10 +934,10 @@
     function showPage(page, path) {
       path = path || '/';
       if (location.pathname !== path) history.pushState(null, '', path);
+      window.scrollTo({ top: 0, behavior: 'instant' });
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       page.classList.add('active');
       menuBtn.textContent = page === infoPage ? 'Selected work' : 'About me';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       resetReveals(page);
       requestAnimationFrame(function(){
         requestAnimationFrame(function(){ revealInView(page); });
@@ -1045,6 +1045,7 @@
     }
 
     // about.html and 404.html send deep links here as /?route=<path>; restore the real path before routing
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     var redirectedRoute = new URLSearchParams(location.search).get('route');
     if (redirectedRoute) history.replaceState(null, '', redirectedRoute);
     if (location.pathname !== '/') routeFromLocation();
